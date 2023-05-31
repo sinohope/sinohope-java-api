@@ -34,10 +34,10 @@ public class DigitalSignerExample {
                 "  \"enabled\": false\n" +
                 "}";
         //执行数字签名【私钥签名】
-        byte[] encodeMsgA2B = DigitalSigner.digitalSign(originalData.getBytes(), privateKey);
-        System.out.println("JDK ECDSA签名：:\n" + Base64.encodeBase64String(encodeMsgA2B));
+        byte[] digitalSign = DigitalSigner.digitalSign(originalData.getBytes(), privateKey);
+        System.out.println("JDK ECDSA签名：:\n" + Base64.encodeBase64String(digitalSign));
         //验证签名【公钥验证】
-        boolean bool = DigitalSigner.signVerify(originalData.getBytes(), encodeMsgA2B, publicKey);
+        boolean bool = DigitalSigner.signVerify(originalData.getBytes(), digitalSign, publicKey);
         System.out.println("数字签名验签结果:\n" + bool);
     }
 }
