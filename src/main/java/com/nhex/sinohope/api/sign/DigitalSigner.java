@@ -23,8 +23,8 @@ import java.util.Map;
  * @date 2023/5/24 10:46
  **/
 public class DigitalSigner {
-    private static final String PUBLIC_KEY = "";
-    private static final String PRIVATE_KEY = "";
+    private static final String PUBLIC_KEY = "ECDSAPublicKey";
+    private static final String PRIVATE_KEY = "ECDSAPrivateKey";
 
     /**
      * @return Map pub、pri key
