@@ -10,6 +10,7 @@ import java.util.Map;
  * @author lishuo
  * @date 2023/5/24 10:46
  **/
+@Deprecated
 public class DigitalSignerExample {
 
     public static void main(String[] args) {
