@@ -1,4 +1,4 @@
-package com.nhex.sinohope.api.sign;
+package api.sign;
 
 import java.security.Key;
 import java.security.KeyFactory;

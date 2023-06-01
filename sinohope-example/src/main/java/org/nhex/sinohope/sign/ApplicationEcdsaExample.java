@@ -1,9 +1,9 @@
 package org.nhex.sinohope.sign;
 
-import com.nhex.sinohope.api.sign.ECDSA;
+import api.sign.ECDSA;
 
-import static com.nhex.sinohope.api.sign.ECDSA.SECP256R1;
-import static com.nhex.sinohope.api.util.SignerUtil.doGenerateSignMetaDataAsString;
+import static api.sign.ECDSA.SECP256R1;
+import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
 
 /**
  * @author lishuo

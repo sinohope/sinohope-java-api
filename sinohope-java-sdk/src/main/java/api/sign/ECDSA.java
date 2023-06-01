@@ -1,4 +1,4 @@
-package com.nhex.sinohope.api.sign;
+package api.sign;
 
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.ECPointUtil;
