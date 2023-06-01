@@ -1,4 +1,4 @@
-package main.java.org.nhex.sinohope.sign;
+package org.nhex.sinohope.sign;
 
 import com.nhex.sinohope.api.sign.ECDSA;
 import org.bouncycastle.util.encoders.Hex;
