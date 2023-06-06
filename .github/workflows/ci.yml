@@ -1,0 +1,42 @@
+name: Java Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build project
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test -B
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0
+          release_name: Release v1.0.0
+          body: |
+            Description of the release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: sinohope-java-api
+          path: target/sinohope-java-api.jar

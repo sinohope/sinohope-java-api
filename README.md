@@ -1,121 +1,80 @@
-
 # Sinohope Java API
 
-sinohope-java-api is a lightweight Java library for interacting with the [Cobo Custody API](https://doc.custody.cobo.com/?#cobo-custody-waas-api), providing complete API coverage.
+sinohope-java-api is a lightweight Java library for interacting with the [Sinohope Custody API](https://www.newhuotech.com/), providing complete API coverage.
 
 
 * [Installation](#installation)
 * [Test](#test)
 * [Usage](#usage)
-    * [Initialize](#initialize)
-        * [Generate Key Pair](#generate-key-pair)
-        * [Initialize RestClient](#initialize-restclient)
-        * [Initialize ApiSigner](#initialize-apisigner)
+  * [Generate Key Pair](#generate-key-pair)
+  * [Generate Signature](#generate-signature)
+  * [Validate Signature](#validate-signature)
 
 ## Installation
-
-Step 1. Add the JitPack repository to your build file
-
-gradle:
-
-```
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
+Step 1. Add the dependency
 
 maven:
-
-```
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-Step 2. Add the dependency
-
-gradle:
-
-```
-dependencies {
-    implementation 'com.github.CoboCustody:cobo-java-api:v0.55'
-}
-```
-
-maven:
-
 ```
 <dependency>
-    <groupId>com.github.CoboCustody</groupId>
-    <artifactId>cobo-java-api</artifactId>
-    <version>v0.55</version>
+    <groupId>org.nhex.sinohope</groupId>
+    <artifactId>sinohope-java-api</artifactId>
+    <version>1.0</version>
 </dependency>
 ```
-
 
 
 ## Test
 
 ```
- ./gradlew test -DEnv=sandbox/prod -DApiSecret=<yourApiSecret>
+ run org.nhex.sinohope.sign.ApplicationEcdsaExample
 ```
 
 ## Usage
 
-### Initialize
 
-#### Generate Key Pair
+### Generate Key Pair
 ```java
-import com.cobo.custody.api.client.impl.LocalSigner;
+import api.sign.ECDSA;
 
-String[] key = LocalSigner.generateKeyPair();
-String secretKey = key[0];
-String apiKey = key[1];
+ECDSA ecdsa = new ECDSA(SECP256R1);
+
+KeyPair pair = ecdsa.generateKeyPair();
+String privateKey = Hex.toHexString(pair.getPrivate().getEncoded());
+String publicKey = Hex.toHexString(pair.getPublic().getEncoded());
+System.out.println("publicKey is ->" + publicKey);
+System.out.println("privateKey is ->" + privateKey);
 ```
 Please refer to the link [link](https://doc.custody.cobo.com/en.html#api-authentication) for how to use apiKey
 
-#### Initialize RestClient
-These can be instantiated through the corresponding factory method of `CoboApiClientFactory`
+### Generate Signature
+Calling this method generates a signature using the ecdsa encryption algorithm.
 
 ```java
-import com.cobo.custody.api.client.CoboApiClientFactory;
-import com.cobo.custody.api.client.CoboApiRestClient;
-import com.cobo.custody.api.client.config.CoboApiConfig;
-import com.cobo.custody.api.client.config.Env;
-import com.cobo.custody.api.client.impl.LocalSigner;
+import api.sign.ECDSA;
+import static api.sign.ECDSA.SECP256R1;
+import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
 
-CoboApiRestClient client = CoboApiClientFactory.newInstance(
-                new LocalSigner(apiSecret),
-                Env.SANDBOX,
-                false).newRestClient();
+ECDSA ecdsa = new ECDSA(SECP256R1);
+
+//privateKey is use  before step final result
+String msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/save");
+System.out.println("msg is ->" +msg);
+
+String signature = ecdsa.sign(msg, ecdsa.parsePKCS8PrivateKey(privateKey));
+System.out.println("signature is ->" + signature);
 ```
 
-#### Initialize ApiSigner
-
-
-`ApiSigner` can be instantiated through `new LocalSigner("secretkey" )`
-
-In some cases, your private key cannot be exported, for example, your private key is in aws kms, you should pass in your own implementation by implements `ApiSigner` interface:
+### Validate Signature
+Calling this method verifies that the signature of the ecdsa encryption algorithm is correct.
 
 
 ```java
+import api.sign.ECDSA;
+import static api.sign.ECDSA.SECP256R1;
+import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
 
-import com.cobo.custody.api.client.ApiSigner;
-new ApiSigner() {
-    @Override
-    public String sign(byte[] message) {
-        return null;
-    }
+ECDSA ecdsa = new ECDSA(SECP256R1);
 
-    @Override
-    public String getPublicKey() {
-        return null;
-    }
-}
+//signature is use before step final result
+ecdsa.verify(msg, ecdsa.parseX509PublicKey(publicKey), signature));
 ```

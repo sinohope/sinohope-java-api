@@ -1,53 +1,42 @@
-HELP.md
+# maven ignore
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-*.DS_Store
-!**/src/.umi/**
-.idea/
-*.gz
-.run
-*.iml
-/target/
-/.idea/
-/log/
-.arcconfig
-### STS ###
-.apt_generated
-.classpath
-.factorypath
+*.class
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+dependency-reduced-pom.xml
+
+# maven plugin ignore
+release.properties
+cobertura.ser
+*.gpg
+
+# eclipse ignore
+.settings/
 .project
-.settings
-.springBeans
-.sts4-cache
-.date
+.classpath
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
+# idea ignore
+.idea/
 *.ipr
+*.iml
+*.iws
+
+# temp ignore
+logs/
 *.log
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+*.doc
+*.cache
+*.diff
+*.patch
+*.tmp
 
-### VS Code ###
-.vscode/
-mvnw
-mvnw.cmd
-uds/*
-scrm-operation.log*
+# system ignore
 .DS_Store
+Thumbs.db
 
-flume/
-**/.umi/*
-**.DS_Store
-node_modules
+# agent build ignore
+/agent/
+
