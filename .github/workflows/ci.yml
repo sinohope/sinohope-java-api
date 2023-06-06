@@ -1,42 +1,40 @@
-name: Java Release
-
+name: Publish package to the Maven Central Repository and GitHub Packages
 on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
-
-      - name: Build project
-        run: mvn clean install
-
-      - name: Run tests
-        run: mvn test -B
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+          distribution: 'adopt'
+      - name: Publish to GitHub Packages
+        run: mvn --batch-mode deploy -DskipTests -Prelease-github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
         with:
-          tag_name: v1.0.0
-          release_name: Release v1.0.0
-          body: |
-            Description of the release
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
+          java-version: 11
+      - name: Release Maven package
+        uses: samuelmeuli/action-maven-publish@v1
         with:
-          name: sinohope-java-api
-          path: target/sinohope-java-api.jar
+          maven_profiles: 'release-ossrh'
+          maven_args: '-DskipTests'
+          gpg_private_key: ${{ secrets.gpg_private_key }}
+          gpg_passphrase: ${{ secrets.gpg_passphrase }}
+          nexus_username: ${{ secrets.OSSRH_USERNAME }}
+          nexus_password: ${{ secrets.OSSRH_TOKEN }}
