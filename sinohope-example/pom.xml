@@ -27,14 +27,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.nhex.sinohope</groupId>
+            <groupId>com.sinohope</groupId>
             <artifactId>sinohope-java-sdk</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.nhex.sinohope</groupId>
-            <artifactId>sinohope-java-sdk</artifactId>
+            <groupId>com.sinohope</groupId>
+            <artifactId>sinohope-java-api</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
