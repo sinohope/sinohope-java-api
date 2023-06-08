@@ -1,6 +1,6 @@
-package api.util;
+package org.nhex.sinohope.api.util;
 
-import api.constants.Constants;
+import org.nhex.sinohope.api.constants.Constants;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

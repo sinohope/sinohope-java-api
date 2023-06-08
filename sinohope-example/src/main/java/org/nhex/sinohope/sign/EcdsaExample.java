@@ -1,12 +1,12 @@
 package org.nhex.sinohope.sign;
 
-import api.sign.ECDSA;
+import org.nhex.sinohope.api.sign.ECDSA;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.security.KeyPair;
 
-import static api.sign.ECDSA.SECP256R1;
-import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
+import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
+import static org.nhex.sinohope.api.util.SignerUtil.doGenerateSignMetaDataAsString;
 
 /**
  * @author lishuo

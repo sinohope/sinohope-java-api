@@ -1,7 +1,7 @@
 package com.nhex.sinohope.api.sign;
 
 
-import api.sign.DigitalSigner;
+import org.nhex.sinohope.api.sign.DigitalSigner;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

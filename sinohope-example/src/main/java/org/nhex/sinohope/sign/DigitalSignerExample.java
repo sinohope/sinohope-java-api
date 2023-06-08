@@ -1,6 +1,6 @@
 package org.nhex.sinohope.sign;
 
-import api.sign.DigitalSigner;
+import org.nhex.sinohope.api.sign.DigitalSigner;
 import org.apache.commons.codec.binary.Base64;
 
 import java.util.Map;

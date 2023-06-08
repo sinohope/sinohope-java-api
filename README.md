@@ -34,7 +34,7 @@ maven:
 
 ### Generate Key Pair
 ```java
-import api.sign.ECDSA;
+import org.nhex.sinohope.sign.api.ECDSA;
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
 
@@ -50,9 +50,9 @@ Please refer to the link [link](https://doc.custody.cobo.com/en.html#api-authent
 Calling this method generates a signature using the ecdsa encryption algorithm.
 
 ```java
-import api.sign.ECDSA;
-import static api.sign.ECDSA.SECP256R1;
-import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
+import org.nhex.sinohope.sign.api.ECDSA;
+import static org.nhex.sinohope.sign.api.ECDSA.SECP256R1;
+import static org.nhex.sinohope.util.api.SignerUtil.doGenerateSignMetaDataAsString;
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
 
@@ -69,9 +69,9 @@ Calling this method verifies that the signature of the ecdsa encryption algorith
 
 
 ```java
-import api.sign.ECDSA;
-import static api.sign.ECDSA.SECP256R1;
-import static api.util.SignerUtil.doGenerateSignMetaDataAsString;
+import org.nhex.sinohope.sign.api.ECDSA;
+import static org.nhex.sinohope.sign.api.ECDSA.SECP256R1;
+import static org.nhex.sinohope.util.api.SignerUtil.doGenerateSignMetaDataAsString;
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
 

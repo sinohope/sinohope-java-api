@@ -1,4 +1,4 @@
-package api.constants;
+package org.nhex.sinohope.api.constants;
 
 /**
  * Constants.
