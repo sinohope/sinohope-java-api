@@ -25,13 +25,13 @@ public class EcdsaExample {
     System.out.println("privateKey is ->" + privateKey);
 
     //数据加密
-    String msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/save");
+    String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/save");
 
     //签名
-    String signature = ecdsa.sign(msg, ecdsa.parsePKCS8PrivateKey(privateKey));
+    String signature = ecdsa.sign(msg[0], ecdsa.parsePKCS8PrivateKey(privateKey));
     System.out.println("signature is ->" + signature);
 
     //验签
-    System.out.println("Verify signature " + ecdsa.verify(msg, ecdsa.parseX509PublicKey(publicKey), signature));
+    System.out.println("Verify signature " + ecdsa.verify(msg[0], ecdsa.parseX509PublicKey(publicKey), signature));
   }
 }
