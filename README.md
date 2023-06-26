@@ -1,6 +1,6 @@
 # Sinohope Java API
 
-sinohope-java-api is a lightweight Java library for interacting with the [Sinohope Custody API](https://www.newhuotech.com/), providing complete API coverage.
+sinohope-java-api is a lightweight Java library for interacting with the [Sinohope Custody API](https://sinohope.github.io/openloop/index.html#tag/Exchange-greaterCustody/paths/~1collateral~1v1~1address~1status/post), providing complete API coverage.
 
 
 * [Installation](#installation)
