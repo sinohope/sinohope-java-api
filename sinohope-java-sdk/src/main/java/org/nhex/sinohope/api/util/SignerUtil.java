@@ -2,13 +2,14 @@ package org.nhex.sinohope.api.util;
 
 import org.nhex.sinohope.api.constants.Constants;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Title: SignerUtil
@@ -32,12 +33,13 @@ public class SignerUtil {
                 .concat(publicKey).getBytes();
     }
 
-    public static String[] doGenerateSignMetaDataAsString(String publicKey, String path) {
+    public static String[] doGenerateSignMetaDataAsString(String publicKey, String path, String data) {
         Map<String, String> map = new HashMap<>(3);
         map.put(Constants.TIMESTAMP, String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli()));
         System.out.println("BIZ-API-NONCE is -> " + map.get(Constants.TIMESTAMP));
         map.put(Constants.PATH, path);
         map.put(Constants.VERSION, "1.0.0");
+        map.put(Constants.DATA, data);
         String signature = map.keySet().stream()
                 .sorted(Comparator.naturalOrder())
                 .filter(key -> !Objects.equals(key, Constants.SIGN))
@@ -45,5 +47,40 @@ public class SignerUtil {
                 .collect(Collectors.joining()).trim()
                 .concat(publicKey);
         return new String[]{signature, map.get(Constants.TIMESTAMP)};
+    }
+
+    public static String convertJsonToQueryString(Map<String, Object> json) {
+        return "?" +json.entrySet().stream()
+                .flatMap(entry -> {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    try {
+                        if (value instanceof String) {
+                            return Stream.of(keyValuePair(key, (String) value));
+                        } else if (value instanceof List) {
+                            List<?> list = (List<?>) value;
+                            return list.stream().map(item -> {
+                                try {
+                                    return keyValuePair(key, item.toString());
+                                } catch (UnsupportedEncodingException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+                        }
+                    } catch (UnsupportedEncodingException e) {
+                        throw new RuntimeException(e);
+                    }
+                    return Stream.empty();
+                })
+                .collect(Collectors.joining("&"))
+                .replaceAll("&+$", "");
+    }
+
+    private static String keyValuePair(String key, String value) throws UnsupportedEncodingException {
+        return urlEncode(key) + "=" + urlEncode(value);
+    }
+
+    private static String urlEncode(String value) throws UnsupportedEncodingException {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
     }
 }

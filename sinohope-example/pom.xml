@@ -3,11 +3,11 @@
     <parent>
         <groupId>com.sinohope</groupId>
         <artifactId>sinohope-java-api</artifactId>
-        <version>1.0</version>
+        <version>1.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>sinohope-example</artifactId>
+    <packaging>jar</packaging>
 
     <name>sinohope-example</name>
     <url>http://maven.apache.org</url>
@@ -24,6 +24,11 @@
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
         </dependency>
         <dependency>
             <groupId>com.sinohope</groupId>

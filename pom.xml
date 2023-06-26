@@ -7,7 +7,7 @@
     <groupId>com.sinohope</groupId>
     <artifactId>sinohope-java-api</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.1.0</version>
     <modules>
         <module>sinohope-example</module>
         <module>sinohope-java-sdk</module>
@@ -63,13 +63,21 @@
     </developers>
 
     <distributionManagement>
+<!--        <snapshotRepository>-->
+<!--            <id>snapshots</id>-->
+<!--            <url>http://nexus-inroute.newhuoapps.com/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>releases</id>-->
+<!--            <url>http://nexus-inroute.newhuoapps.com/repository/maven-releases/</url>-->
+<!--        </repository>-->
         <snapshotRepository>
             <id>ossrh</id>
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
 
@@ -107,15 +115,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

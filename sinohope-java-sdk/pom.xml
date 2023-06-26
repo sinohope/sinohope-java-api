@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.sinohope</groupId>
         <artifactId>sinohope-java-api</artifactId>
-        <version>1.0</version>
+        <version>1.1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>sinohope-java-sdk</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
