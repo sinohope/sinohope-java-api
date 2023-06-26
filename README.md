@@ -1,6 +1,6 @@
 # Sinohope Java API
 
-sinohope-java-api is a lightweight Java library for interacting with the [Sinohope Custody API](https://www.newhuotech.com/), providing complete API coverage.
+sinohope-java-api is a lightweight Java library for interacting with the [Sinohope Custody API](https://sinohope.github.io/openloop/index.html#tag/Exchange-greaterCustody/paths/~1collateral~1v1~1address~1status/post), providing complete API coverage.
 
 
 * [Installation](#installation)
@@ -18,7 +18,7 @@ maven:
 <dependency>
     <groupId>org.nhex.sinohope</groupId>
     <artifactId>sinohope-java-api</artifactId>
-    <version>1.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -56,11 +56,29 @@ import static org.nhex.sinohope.util.api.SignerUtil.doGenerateSignMetaDataAsStri
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
 
-//privateKey is use  before step final result
-String msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/save");
-System.out.println("msg is ->" +msg);
+String dataString;
 
-String signature = ecdsa.sign(msg, ecdsa.parsePKCS8PrivateKey(privateKey));
+//POST
+//String postData = "{\n" +
+//        "  \"name\": \"John\",\n" +
+//        "  \"age\": \"30\",\n" +
+//        "  \"city\": \"New York\",\n" +
+//        "  \"hobbies\": [\"reading\", \"playing-guitar\", \"painting\"]\n" +
+//        "}";
+        
+//ObjectMapper objectMapper = new ObjectMapper();
+//Map<String, Object> jsonMap = objectMapper.readValue(postData, Map.class);
+//dataString =  convertJsonToQueryString(jsonMap);
+
+//Get
+dataString ="?name=John&id=30";
+
+// privateKey is use  before step final result
+String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/save",dataString);
+System.out.println("signature data is ->" + msg[0]);
+System.out.println("request nonce is ->" + msg[1]);
+
+String signature = ecdsa.sign(msg[0], ecdsa.parsePKCS8PrivateKey(privateKey));
 System.out.println("signature is ->" + signature);
 ```
 
@@ -76,5 +94,6 @@ import static org.nhex.sinohope.util.api.SignerUtil.doGenerateSignMetaDataAsStri
 ECDSA ecdsa = new ECDSA(SECP256R1);
 
 //signature is use before step final result
+//msg is msg[0]
 ecdsa.verify(msg, ecdsa.parseX509PublicKey(publicKey), signature));
 ```
