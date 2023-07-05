@@ -18,19 +18,19 @@ import java.util.stream.Stream;
  **/
 public class SignerUtil {
 
-
-    public static byte[] doGenerateSignMetaData(String publicKey, String path) {
+    @Deprecated
+    public static String[] doGenerateSignMetaData(String publicKey, String path) {
         Map<String, String> map = new HashMap<>(3);
         map.put(Constants.TIMESTAMP, String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli()));
         System.out.println("BIZ-API-NONCE is -> " + map.get(Constants.TIMESTAMP));
         map.put(Constants.PATH, path);
         map.put(Constants.VERSION, "1.0.0");
-        return map.keySet().stream()
+        return new String[]{map.keySet().stream()
                 .sorted(Comparator.naturalOrder())
                 .filter(key -> !Objects.equals(key, Constants.SIGN))
                 .map(key -> String.join("", key, map.get(key)))
                 .collect(Collectors.joining()).trim()
-                .concat(publicKey).getBytes();
+                .concat(publicKey)};
     }
 
     public static String[] doGenerateSignMetaDataAsString(String publicKey, String path, String data) {
@@ -47,6 +47,19 @@ public class SignerUtil {
                 .collect(Collectors.joining()).trim()
                 .concat(publicKey);
         return new String[]{signature, map.get(Constants.TIMESTAMP)};
+    }
+
+    public static String doBuildSignQueryString(Map<String, Object> parameters) {
+        StringBuilder queryString = new StringBuilder();
+        for (Map.Entry<String, Object> entry : parameters.entrySet()) {
+            String key = entry.getKey();
+            String value = String.valueOf(entry.getValue());
+            queryString.append(key).append("=").append(value).append("&");
+        }
+        if (queryString.length() > 0) {
+            queryString.setLength(queryString.length() - 1);
+        }
+        return queryString.toString();
     }
 
     public static String convertJsonToQueryString(Map<String, Object> json) {
