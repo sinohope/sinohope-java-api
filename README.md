@@ -18,7 +18,8 @@ maven:
 <dependency>
     <groupId>org.nhex.sinohope</groupId>
     <artifactId>sinohope-java-api</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
+
 </dependency>
 ```
 
@@ -56,25 +57,30 @@ import static org.nhex.sinohope.util.api.SignerUtil.doGenerateSignMetaDataAsStri
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
 
-String dataString;
 
-//POST
-//String postData = "{\n" +
-//        "  \"name\": \"John\",\n" +
-//        "  \"age\": \"30\",\n" +
-//        "  \"city\": \"New York\",\n" +
-//        "  \"hobbies\": [\"reading\", \"playing-guitar\", \"painting\"]\n" +
-//        "}";
-        
-//ObjectMapper objectMapper = new ObjectMapper();
-//Map<String, Object> jsonMap = objectMapper.readValue(postData, Map.class);
-//dataString =  convertJsonToQueryString(jsonMap);
+//Post
+YourBizDto yourBizDto = YourBizDto.builder()
+        .settlementId("434094777691909")
+        .cvaId("433366151883589")
+        .data(Arrays.asList(
+            YourBizSubDto.builder()
+            .assetId("USDT_BNB_TEST")
+            .status("COMPLETED")
+            .txHash("0xaacfdfc5cd215eb35f5a3a966dda3ac8ee765ccc7070459c4c4951dc3f715d19")
+            .build()
+        )).build();
+String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/test/json2", JSON.toJSONString(yourBizDto));
+
 
 //Get
-dataString ="?name=John&id=30";
+Map<String,Object> paramMap = new LinkedHashMap<>();
+paramMap.put("id", "098343230");
+paramMap.put("name", "test");
+String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/order/findById",doBuildSignQueryString(paramMap));
 
+//chose Post or Get request type
 // privateKey is use  before step final result
-String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/save",dataString);
+
 System.out.println("signature data is ->" + msg[0]);
 System.out.println("request nonce is ->" + msg[1]);
 
