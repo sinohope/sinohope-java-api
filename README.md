@@ -19,6 +19,7 @@ maven:
     <groupId>org.nhex.sinohope</groupId>
     <artifactId>sinohope-java-api</artifactId>
     <version>1.1.1</version>
+
 </dependency>
 ```
 
@@ -79,6 +80,7 @@ String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo
 
 //chose Post or Get request type
 // privateKey is use  before step final result
+
 System.out.println("signature data is ->" + msg[0]);
 System.out.println("request nonce is ->" + msg[1]);
 

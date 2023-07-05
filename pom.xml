@@ -8,6 +8,7 @@
     <artifactId>sinohope-java-api</artifactId>
     <packaging>pom</packaging>
     <version>1.1.1</version>
+
     <modules>
         <module>sinohope-example</module>
         <module>sinohope-java-sdk</module>

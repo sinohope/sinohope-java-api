@@ -6,6 +6,7 @@
         <groupId>com.sinohope</groupId>
         <artifactId>sinohope-java-api</artifactId>
         <version>1.1.1</version>
+
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sinohope-java-sdk</artifactId>
