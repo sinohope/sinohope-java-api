@@ -15,6 +15,7 @@ import static org.nhex.sinohope.api.util.SignerUtil.doGenerateSignMetaDataAsStri
  * @author lishuo
  * @date 2023/5/24 10:46
  **/
+@Deprecated
 public class EcdsaExample {
 
     public static void main(String[] args) throws Exception {
