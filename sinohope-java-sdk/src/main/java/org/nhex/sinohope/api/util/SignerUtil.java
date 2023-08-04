@@ -44,13 +44,13 @@ public class SignerUtil {
     map.put(Constants.PATH, path);
     map.put(Constants.VERSION, "1.0.0");
     map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data : "");
-    String signature = map.keySet().stream()
+    String signMetaData = map.keySet().stream()
         .sorted(Comparator.naturalOrder())
 //                .filter(key -> !Objects.equals(key, Constants.SIGN))
         .map(key -> String.join("", key, map.get(key)))
         .collect(Collectors.joining()).trim()
         .concat(publicKey);
-    return new String[]{signature, map.get(Constants.TIMESTAMP)};
+    return new String[]{signMetaData, map.get(Constants.TIMESTAMP)};
   }
 
   public static String doBuildSignQueryString(Map<String, Object> parameters) {
