@@ -1,13 +1,17 @@
 package com.nhex.sinohope.api.sign;
 
 
+import org.bouncycastle.util.encoders.Hex;
 import org.nhex.sinohope.api.sign.DigitalSigner;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.nhex.sinohope.api.sign.ECDSA;
 
+import java.security.KeyPair;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.nhex.sinohope.api.sign.ECDSA.SECP256K1;
 
 /**
  * com.nhex.sinohope.api.sign.DigitalSignerTest
@@ -48,6 +52,16 @@ public class DigitalSignerTest {
         Map<String, Object> keyMap = DigitalSigner.initKey();
         publicKey = DigitalSigner.getPublicKey(keyMap);
         privateKey = DigitalSigner.getPrivateKey(keyMap);
+    }
+
+    @Test
+    public void getPublicKeyAndPrivateKey() throws Exception {
+        ECDSA ecdsa = new ECDSA(SECP256K1);
+        KeyPair keyPair = ecdsa.generateKeyPair();
+        String publicKey = Hex.toHexString(keyPair.getPublic().getEncoded());
+        String privateKey = Hex.toHexString(keyPair.getPrivate().getEncoded());
+        System.out.println("publicKey = " + publicKey);
+        System.out.println("privateKey = " + privateKey);
     }
 
     @Test
