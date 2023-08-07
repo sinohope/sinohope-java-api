@@ -2,6 +2,7 @@ package org.nhex.sinohope.api.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.nhex.sinohope.api.constants.Constants;
+import org.nhex.sinohope.api.sign.ECDSA;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -15,12 +16,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
+
 /**
  * @Title: SignerUtil
  * @Author lishuo
  * @Date 2023-05-31 11:14
  **/
 public class SignerUtil {
+
+
+
 
   @Deprecated
   public static String[] doGenerateSignMetaData(String publicKey, String path) {
@@ -31,7 +37,6 @@ public class SignerUtil {
     map.put(Constants.VERSION, "1.0.0");
     return new String[]{map.keySet().stream()
         .sorted(Comparator.naturalOrder())
-//                .filter(key -> !Objects.equals(key, Constants.SIGN))
         .map(key -> String.join("", key, map.get(key)))
         .collect(Collectors.joining()).trim()
         .concat(publicKey)};
@@ -100,4 +105,35 @@ public class SignerUtil {
   private static String urlEncode(String value) throws UnsupportedEncodingException {
     return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
   }
+
+  public static String getSignMetaData(String nonce, String publicKey, String path, String data) {
+    Map<String, String> map = new HashMap<>();
+    map.put(Constants.TIMESTAMP, nonce);
+    map.put(Constants.PATH, path);
+    map.put(Constants.VERSION, "1.0.0");
+    map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data : "");
+    return map.keySet().stream()
+        .sorted(Comparator.naturalOrder())
+        .map(key -> String.join("", key, map.get(key)))
+        .collect(Collectors.joining()).trim()
+        .concat(publicKey);
+  }
+
+  public static boolean verifySign(String apiKey, String signature, String paramSignature) {
+    ECDSA ecdsa = null;
+    try {
+      ecdsa = new ECDSA(SECP256R1);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+    try {
+      return ecdsa.verify(paramSignature,
+          ecdsa.parseX509PublicKey(apiKey),
+          signature);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+
 }
