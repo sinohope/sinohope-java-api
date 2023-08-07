@@ -1,13 +1,17 @@
 package org.nhex.sinohope.sign;
 
 import com.alibaba.fastjson2.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nhex.sinohope.api.sign.ECDSA;
+import org.nhex.sinohope.client.WaasApiRequest;
 import org.nhex.sinohope.pojo.SettlementDetailDTO;
 import org.nhex.sinohope.pojo.SettlementFinishDetailReqDto;
 import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
 import org.nhex.sinohope.pojo.SettlementReqDemo;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.TreeMap;
 
 import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
 import static org.nhex.sinohope.api.util.SignerUtil.doGenerateSignMetaDataAsString;
@@ -72,12 +76,32 @@ public class ApplicationEcdsaExample {
                                 .build()
                 )).build();
 
+        ObjectMapper mapper = new ObjectMapper();
+        WaasApiRequest waasApiRequest = new WaasApiRequest();
+        waasApiRequest.setApiType(0);
+        waasApiRequest.setApiList(new HashSet<>(Arrays.asList("/user-auth-c/ua/waas/getValueByApiKey", "/user-auth-c/ua/user/existId", "/user-auth-c/ua/waas/add")));
+        System.out.println(mapper.writeValueAsString(waasApiRequest));
         //数据加密
         //post1
         //String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/test/json", JSON.toJSONString(settlementReqDemo));
 
         //post2
-        String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/test/json2", JSON.toJSONString(settlementFinishReqDemo));
+//    String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/test/json2", JSON.toJSONString(settlementFinishReqDemo));
+
+//    String[] msg = doGenerateSignMetaDataAsString(publicKey, "/user-auth-c/ua/waas/add", JSON.toJSONString(waasApiRequest));
+        TreeMap<String, Object> params = new TreeMap<>();
+//    params.put("apiKey", "3059301306072a8648ce3d020106082a8648ce3d030107034200040d40ecc03b81c3570d9252da05d4a2283b300da77505b61359e932c97c58c48af9ab7d3926abd40338a245360e8d91d989c451d046d46016b9d32ad70a0a9055");
+        params.put("apiKey", "3059301306072a8648ce3d020106082a8648ce3d030107034200040d40ecc03b81c3570d9252da05d4a2283b300da77505b61359e932c97c58c48af9ab7d3926abd40338a245360e8d91d989c451d046d46016b9d32ad70a0a9055");
+
+//    String[] msg = doGenerateSignMetaDataAsString(publicKey, "/user-auth-c/ua/waas/getValueByApiKey", composeParams(params));
+        String[] msg = doGenerateSignMetaDataAsString(publicKey, "/user-auth-c/ua/user/existId", null);
+
+        //数据加密
+        //post1
+        //String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/test/json", JSON.toJSONString(settlementReqDemo));
+
+        //post2
+//        String[] msg = doGenerateSignMetaDataAsString(publicKey, "/gaia-internal-api/demo/test/json2", JSON.toJSONString(settlementFinishReqDemo));
 
         //Get demo data
         /*Map<String,Object> paramMap = new LinkedHashMap<>();
