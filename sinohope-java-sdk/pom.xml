@@ -50,6 +50,10 @@
         </dependency>
     </dependencies>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>sinohope java sdk</description>
+    <url>https://github.com/sinohope/sinohope-java-api</url>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version2.0</name>
