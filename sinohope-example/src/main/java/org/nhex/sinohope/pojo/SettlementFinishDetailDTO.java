@@ -9,7 +9,7 @@ import lombok.Data;
  **/
 @Data
 @Builder
-public class SettlementFinishDetailReqDto {
+public class SettlementFinishDetailDTO {
     private String assetId;
     private String status;
     private String txHash;
