@@ -9,6 +9,7 @@ import java.time.ZoneOffset;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
@@ -20,6 +21,17 @@ import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
  **/
 public class SignerUtil {
 
+
+  public static String composeParams(TreeMap<String, Object> params) {
+    StringBuffer sb = new StringBuffer();
+    params.forEach((s, o) -> {
+      sb.append(s).append("=").append(o).append("&");
+    });
+    if (sb.length() > 0) {
+      sb.deleteCharAt(sb.length() - 1);
+    }
+    return sb.toString();
+  }
 
   public static String getNonce() {
     return String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli());
