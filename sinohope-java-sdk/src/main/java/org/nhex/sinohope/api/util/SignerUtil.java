@@ -37,7 +37,7 @@ public class SignerUtil {
     return String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli());
   }
 
-  public static String getSignMetaData(String nonce, String publicKey, String path, String data) {
+  public static String generateSignMetaData(String nonce, String publicKey, String path, String data) {
     Map<String, String> map = new HashMap<>();
     map.put(Constants.TIMESTAMP, nonce);
     map.put(Constants.PATH, path);
@@ -50,7 +50,7 @@ public class SignerUtil {
         .concat(publicKey);
   }
 
-  public static String[] doGenerateSignMetaDataAsString(String publicKey, String path, String data) {
+  public static String[] generateSignMetaData(String publicKey, String path, String data) {
     Map<String, String> map = new HashMap<>(4);
     map.put(Constants.TIMESTAMP, String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli()));
     map.put(Constants.PATH, path);

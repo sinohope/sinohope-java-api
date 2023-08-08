@@ -13,7 +13,7 @@ import java.util.TreeMap;
 
 import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
 import static org.nhex.sinohope.api.util.SignerUtil.composeParams;
-import static org.nhex.sinohope.api.util.SignerUtil.doGenerateSignMetaDataAsString;
+import static org.nhex.sinohope.api.util.SignerUtil.generateSignMetaData;
 
 /**
  * @author lishuo
@@ -36,7 +36,7 @@ public class ApplicationEcdsaExample {
     paramMap.put("name", "测试test");
     String composeParams = composeParams(paramMap);
     //组装待签名数据
-    String[] msg1 = doGenerateSignMetaDataAsString(publicKey, "/v1/test", composeParams);
+    String[] msg1 = generateSignMetaData(publicKey, "/v1/test", composeParams);
     System.out.println("get demo signature data is ->" + msg1[0]);
     System.out.println("get demo request nonce is ->" + msg1[1]);
     //签名
@@ -83,7 +83,7 @@ public class ApplicationEcdsaExample {
         .build();
 
     //组装待签名数据
-    String[] msg2 = doGenerateSignMetaDataAsString(publicKey, "/v1/test", JSON.toJSONString(settlementDTO));
+    String[] msg2 = generateSignMetaData(publicKey, "/v1/test", JSON.toJSONString(settlementDTO));
     System.out.println("post demo1 signature data is ->" + msg2[0]);
     System.out.println("post demo1 request nonce is ->" + msg2[1]);
     //签名
@@ -108,7 +108,7 @@ public class ApplicationEcdsaExample {
         )).build();
 
     //post2
-    String[] msg3 = doGenerateSignMetaDataAsString(publicKey, "/v1/test", JSON.toJSONString(settlementFinishDTO));
+    String[] msg3 = generateSignMetaData(publicKey, "/v1/test", JSON.toJSONString(settlementFinishDTO));
     System.out.println("post demo2 signature data is ->" + msg3[0]);
     System.out.println("post demo2 request nonce is ->" + msg3[1]);
     //签名
