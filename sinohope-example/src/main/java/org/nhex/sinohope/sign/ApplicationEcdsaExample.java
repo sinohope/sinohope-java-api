@@ -30,7 +30,7 @@ public class ApplicationEcdsaExample {
     String privateKey = "308193020100301306072a8648ce3d020106082a8648ce3d030107047930770201010420093bf9385f3d2142f3a3f8101c23847f6de06fe89606a26d3b0d112428839586a00a06082a8648ce3d030107a144034200040d40ecc03b81c3570d9252da05d4a2283b300da77505b61359e932c97c58c48af9ab7d3926abd40338a245360e8d91d989c451d046d46016b9d32ad70a0a9055";
 
 
-    //Get demo data
+    //GET demo data
     TreeMap<String, Object> paramMap = new TreeMap<>();
     paramMap.put("id", "098343230");
     paramMap.put("name", "测试test");
