@@ -1,5 +1,6 @@
 package com.nhex.sinohope;
 
+import com.alibaba.fastjson.JSON;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
 import java.security.KeyPair;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
@@ -54,7 +55,7 @@ public class ApiTest {
   public void testPostWithList() {
     WaasApiRequest request = new WaasApiRequest();
     request.setApiType(0);
-    request.setApiList(new HashSet<>(Arrays.asList("/user-auth-c/ua/waas/getValueByApiKey", "/user-auth-c/ua/user/existId", "/user-auth-c/ua/waas/add")));
+    request.setApiList(new LinkedHashSet<>(Arrays.asList("/user-auth-c/ua/waas/getValueByApiKey", "/user-auth-c/ua/user/existId", "/user-auth-c/ua/waas/add")));
     ResultData<Void> res = client.add(request);
     System.out.println(res);
   }
@@ -94,7 +95,7 @@ public class ApiTest {
     Map<String, String> request = new HashMap<>();
     request.put("apiType", "0");
     request.put("apiList", "/user-auth-c/ua/waas/getValueByApiKey, /user-auth-c/ua/user/existId, /user-auth-c/ua/waas/add");
-    ResultData<Void> res = client.add2(request);
+    ResultData<Void> res = client.add2(JSON.toJSONString(request));
     System.out.println(res);
   }
 

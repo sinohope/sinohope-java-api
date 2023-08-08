@@ -79,7 +79,7 @@ public class ApplicationEcdsaExample {
         ObjectMapper mapper = new ObjectMapper();
         WaasApiRequest waasApiRequest = new WaasApiRequest();
         waasApiRequest.setApiType(0);
-        waasApiRequest.setApiList(new HashSet<>(Arrays.asList("/user-auth-c/ua/waas/getValueByApiKey", "/user-auth-c/ua/user/existId", "/user-auth-c/ua/waas/add")));
+//        waasApiRequest.setApiList(new HashSet<>(Arrays.asList("/user-auth-c/ua/waas/getValueByApiKey", "/user-auth-c/ua/user/existId", "/user-auth-c/ua/waas/add")));
         System.out.println(mapper.writeValueAsString(waasApiRequest));
         //数据加密
         //post1

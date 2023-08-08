@@ -17,7 +17,7 @@ public interface ApiClient {
 
   ResultData<Void> transfer(TransferRequest request);
 
-  ResultData<Void> add2(Map<String, String> request);
+  ResultData<Void> add2(String request);
 
   ResultData<Void> add3(SettlementFinishReqDemo request);
 

@@ -3,6 +3,7 @@ package org.nhex.sinohope.client;
 import com.alibaba.fastjson2.JSON;
 import okhttp3.*;
 import okio.Buffer;
+import org.apache.commons.lang3.StringUtils;
 import org.nhex.sinohope.api.sign.ECDSA;
 
 import java.io.IOException;
@@ -117,11 +118,13 @@ public class AuthenticationInterceptor implements Interceptor {
     } else {
       throw new RuntimeException("not supported http method");
     }
+    if (StringUtils.isNotBlank(body)) {
+      body = body.replaceAll(" ", "").replaceAll("\n", "");
+    }
     String[] msg = doGenerateSignMetaDataAsString(apiKey, path, body);
-    System.out.println(msg[0]);
-    String sig = null;
+    String sign = null;
     try {
-      sig = signer.sign(msg[0], signer.parsePKCS8PrivateKey(privateKey));
+      sign = signer.sign(msg[0], signer.parsePKCS8PrivateKey(privateKey));
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -130,7 +133,10 @@ public class AuthenticationInterceptor implements Interceptor {
         .addHeader("X-EXCHANGE-ID", "1002")
 //        .addHeader("Authorization", "bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIwYjQ2ZmFlZmI0YWI0N2I1OGNhZmY5Mjc0YzIxM2M4NyIsInVzZXJJZCI6NjQwMDAwMSwiZXhjaGFuZ2VJZCI6MTAwMiwiaWF0IjoxNjkwOTY4OTY5LCJleHAiOjE2OTEwNTUzNjl9.JKaBLAhACldEVW2CTWQ3ADXeeS6y1alF1kZuTBXeHfR50J5Gmrqrq3MQ67NQelQkObu7rzNrw86XC1pk3NjHdw")
 //        .addHeader("X-USER-ID", "6400000")
-        .addHeader(ApiConstants.BIZ_API_SIGNATURE, sig);
+        .addHeader(ApiConstants.BIZ_API_SIGNATURE, sign);
+    System.out.println("待签名数据 = " + msg[0]);
+    System.out.println("时间戳 = " + msg[1]);
+    System.out.println("签名 = " + sign);
     return newRequestBuilder.build();
   }
 

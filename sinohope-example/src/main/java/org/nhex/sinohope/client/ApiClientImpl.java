@@ -41,7 +41,7 @@ public class ApiClientImpl implements ApiClient {
   }
 
   @Override
-  public ResultData<Void> add2(Map<String, String> request) {
+  public ResultData<Void> add2(String request) {
     return executeSync(apiService.add2(request));
   }
 

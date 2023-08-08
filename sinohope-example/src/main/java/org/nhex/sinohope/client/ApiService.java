@@ -2,9 +2,10 @@ package org.nhex.sinohope.client;
 
 import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
 import retrofit2.Call;
-import retrofit2.http.*;
-
-import java.util.Map;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * @author wangfengchen
@@ -23,13 +24,11 @@ public interface ApiService {
   @POST("/mpc-wallet/api/wallet/asset/transaction/apply/transfer")
   Call<ResultData<Void>> transfer(@Body TransferRequest request);
 
-  @FormUrlEncoded
   @POST("/user-auth-c/ua/waas/add")
-  Call<ResultData<Void>> add2(@FieldMap Map<String, String> request);
+  Call<ResultData<Void>> add2(@Body String request);
 
   @POST("/user-auth-c/ua/waas/add")
   Call<ResultData<Void>> add3(@Body SettlementFinishReqDemo request);
-
 
 
 }
