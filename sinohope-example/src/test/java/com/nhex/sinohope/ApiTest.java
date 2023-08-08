@@ -6,14 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.nhex.sinohope.api.sign.ECDSA;
 import org.nhex.sinohope.client.*;
-import org.nhex.sinohope.pojo.SettlementFinishDetailReqDto;
-import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
+import org.nhex.sinohope.pojo.SettlementFinishDTO;
+import org.nhex.sinohope.pojo.SettlementFinishDetailDTO;
 
 import java.security.KeyPair;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.util.*;
 
 import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
 
@@ -101,11 +98,11 @@ public class ApiTest {
 
   @Test
   public void testPostWithObjectAndList() {
-    SettlementFinishReqDemo request = SettlementFinishReqDemo.builder()
+    SettlementFinishDTO request = SettlementFinishDTO.builder()
         .settlementId("434094777691909")
         .cvaId("433366151883589")
-        .data(Arrays.asList(
-            SettlementFinishDetailReqDto.builder()
+        .data(Collections.singletonList(
+            SettlementFinishDetailDTO.builder()
                 .assetId("USDT_BNB_TEST")
                 .status("COMPLETED")
                 .txHash("0xaacfdfc5cd215eb35f5a3a966dda3ac8ee765ccc7070459c4c4951dc3f715d19")

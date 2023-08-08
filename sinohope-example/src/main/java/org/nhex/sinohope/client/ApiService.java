@@ -1,6 +1,6 @@
 package org.nhex.sinohope.client;
 
-import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
+import org.nhex.sinohope.pojo.SettlementFinishDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -28,7 +28,7 @@ public interface ApiService {
   Call<ResultData<Void>> add2(@Body String request);
 
   @POST("/user-auth-c/ua/waas/add")
-  Call<ResultData<Void>> add3(@Body SettlementFinishReqDemo request);
+  Call<ResultData<Void>> add3(@Body SettlementFinishDTO request);
 
 
 }

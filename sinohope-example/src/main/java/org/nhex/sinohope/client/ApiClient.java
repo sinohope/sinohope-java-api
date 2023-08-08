@@ -1,8 +1,6 @@
 package org.nhex.sinohope.client;
 
-import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
-
-import java.util.Map;
+import org.nhex.sinohope.pojo.SettlementFinishDTO;
 
 /**
  * @author wangfengchen
@@ -19,7 +17,7 @@ public interface ApiClient {
 
   ResultData<Void> add2(String request);
 
-  ResultData<Void> add3(SettlementFinishReqDemo request);
+  ResultData<Void> add3(SettlementFinishDTO request);
 
 
 }

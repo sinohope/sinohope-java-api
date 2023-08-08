@@ -1,9 +1,7 @@
 package org.nhex.sinohope.client;
 
 import org.nhex.sinohope.api.sign.ECDSA;
-import org.nhex.sinohope.pojo.SettlementFinishReqDemo;
-
-import java.util.Map;
+import org.nhex.sinohope.pojo.SettlementFinishDTO;
 
 import static org.nhex.sinohope.client.ApiServiceGenerator.createService;
 import static org.nhex.sinohope.client.ApiServiceGenerator.executeSync;
@@ -46,7 +44,7 @@ public class ApiClientImpl implements ApiClient {
   }
 
   @Override
-  public ResultData<Void> add3(SettlementFinishReqDemo request) {
+  public ResultData<Void> add3(SettlementFinishDTO request) {
     return executeSync(apiService.add3(request));
   }
 
