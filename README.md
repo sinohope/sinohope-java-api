@@ -16,9 +16,9 @@ Step 1. Add the dependency
 maven:
 ```
 <dependency>
-    <groupId>org.nhex.sinohope</groupId>
-    <artifactId>sinohope-java-api</artifactId>
-    <version>1.1.1</version>
+    <groupId>com.sinohope</groupId>
+    <artifactId>sinohope-java-sdk</artifactId>
+    <version>1.1.4</version>
 
 </dependency>
 ```
@@ -38,14 +38,13 @@ maven:
 import org.nhex.sinohope.sign.api.ECDSA;
 
 ECDSA ecdsa = new ECDSA(SECP256R1);
-
-KeyPair pair = ecdsa.generateKeyPair();
-String privateKey = Hex.toHexString(pair.getPrivate().getEncoded());
-String publicKey = Hex.toHexString(pair.getPublic().getEncoded());
-System.out.println("publicKey is ->" + publicKey);
-System.out.println("privateKey is ->" + privateKey);
+KeyPair keyPair = ecdsa.generateKeyPair();
+String publicKey = Hex.toHexString(keyPair.getPublic().getEncoded());
+String privateKey = Hex.toHexString(keyPair.getPrivate().getEncoded());
+System.out.println("publicKey = " + publicKey);
+System.out.println("privateKey = " + privateKey);
 ```
-Please refer to the link [link](https://doc.custody.cobo.com/en.html#api-authentication) for how to use apiKey
+Please refer to the link [link](https://sinohope.github.io/api/) for how to use apiKey
 
 ### Generate Signature
 Calling this method generates a signature using the ecdsa encryption algorithm.
@@ -69,14 +68,14 @@ YourBizDto yourBizDto = YourBizDto.builder()
             .txHash("0xaacfdfc5cd215eb35f5a3a966dda3ac8ee765ccc7070459c4c4951dc3f715d19")
             .build()
         )).build();
-String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/test/json2", JSON.toJSONString(yourBizDto));
+String[] msg = generateSignMetaData(publicKey, "/you-project-path/demo/test/json2", JSON.toJSONString(yourBizDto));
 
 
 //Get
 Map<String,Object> paramMap = new LinkedHashMap<>();
 paramMap.put("id", "098343230");
 paramMap.put("name", "test");
-String[] msg = doGenerateSignMetaDataAsString(publicKey, "/you-project-path/demo/order/findById",doBuildSignQueryString(paramMap));
+String[] msg = generateSignMetaData(publicKey, "/you-project-path/demo/order/findById",composeParams(paramMap));
 
 //chose Post or Get request type
 // privateKey is use  before step final result
