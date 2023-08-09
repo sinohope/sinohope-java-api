@@ -44,7 +44,7 @@ public class ApiTest {
     System.out.println("privateKey = " + privateKey);
     System.out.println("1 = " + keyPair.getPublic());
     System.out.println("2 = " + keyPair.getPrivate());
-    System.out.println("3 = " + ecdsa.parseECPublicKey(publicKey));
+    System.out.println("3 = " + ecdsa.parseX509PublicKey(publicKey));
     System.out.println("4 = " + ecdsa.parsePKCS8PrivateKey(privateKey));
   }
 
