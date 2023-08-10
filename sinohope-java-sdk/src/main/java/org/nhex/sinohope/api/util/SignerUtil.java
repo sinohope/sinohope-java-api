@@ -42,7 +42,7 @@ public class SignerUtil {
     map.put(Constants.TIMESTAMP, nonce);
     map.put(Constants.PATH, path);
     map.put(Constants.VERSION, "1.0.0");
-    map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data : "");
+    map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data.replaceAll(" ", "").replaceAll("\n", "") : "");
     return map.keySet().stream()
         .sorted(Comparator.naturalOrder())
         .map(key -> String.join("", key, map.get(key)))
@@ -55,7 +55,7 @@ public class SignerUtil {
     map.put(Constants.TIMESTAMP, String.valueOf(LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli()));
     map.put(Constants.PATH, path);
     map.put(Constants.VERSION, "1.0.0");
-    map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data : "");
+    map.put(Constants.DATA, StringUtils.isNotBlank(data) ? data.replaceAll(" ", "").replaceAll("\n", "") : "");
     String signMetaData = map.keySet().stream()
         .sorted(Comparator.naturalOrder())
         .map(key -> String.join("", key, map.get(key)))
