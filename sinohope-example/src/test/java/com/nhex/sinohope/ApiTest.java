@@ -2,11 +2,11 @@ package com.nhex.sinohope;
 
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.jupiter.api.Test;
-import org.nhex.sinohope.api.sign.ECDSA;
+import com.sinohope.sign.ECDSA;
 
 import java.security.KeyPair;
 
-import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
+import static com.sinohope.sign.ECDSA.SECP256R1;
 
 /**
  * @author wangfengchen

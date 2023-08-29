@@ -1,7 +1,7 @@
 package org.nhex.sinohope.sign;
 
 import com.alibaba.fastjson2.JSON;
-import org.nhex.sinohope.api.sign.ECDSA;
+import com.sinohope.sign.ECDSA;
 import org.nhex.sinohope.pojo.SettlementDTO;
 import org.nhex.sinohope.pojo.SettlementDetailDTO;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
@@ -11,9 +11,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.TreeMap;
 
-import static org.nhex.sinohope.api.sign.ECDSA.SECP256R1;
-import static org.nhex.sinohope.api.util.SignerUtil.composeParams;
-import static org.nhex.sinohope.api.util.SignerUtil.generateSignMetaData;
+import static com.sinohope.sign.ECDSA.SECP256R1;
+import static com.sinohope.util.SignerUtil.composeParams;
+import static com.sinohope.util.SignerUtil.generateSignMetaData;
 
 /**
  * @author lishuo

@@ -2,16 +2,16 @@ package com.nhex.sinohope.api.sign;
 
 
 import org.bouncycastle.util.encoders.Hex;
-import org.nhex.sinohope.api.sign.DigitalSigner;
+import com.sinohope.sign.DigitalSigner;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.nhex.sinohope.api.sign.ECDSA;
+import com.sinohope.sign.ECDSA;
 
 import java.security.KeyPair;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.nhex.sinohope.api.sign.ECDSA.SECP256K1;
+import static com.sinohope.sign.ECDSA.SECP256K1;
 
 /**
  * com.nhex.sinohope.api.sign.DigitalSignerTest
