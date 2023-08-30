@@ -1,5 +1,6 @@
 package org.nhex.sinohope.client;
 
+import org.nhex.sinohope.pojo.EmailLoginFeignRequest;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
 
 /**
@@ -18,6 +19,8 @@ public interface ApiClient {
   ResultData<Void> add2(String request);
 
   ResultData<Void> add3(SettlementFinishDTO request);
+
+  ResultData<Void> testPost2(EmailLoginFeignRequest request);
 
 
 }
