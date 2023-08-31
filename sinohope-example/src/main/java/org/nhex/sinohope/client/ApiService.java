@@ -31,10 +31,10 @@ public interface ApiService {
   @POST("/user-auth-c/ua/waas/add")
   Call<ResultData<Void>> add3(@Body SettlementFinishDTO request);
 
-  @GET("/testSdkGet")
+  @GET("/test/testSdkGet")
   Call<ResultData<Void>> testSdkGet(@Query("key") String key, @Query("value") String value);
 
-  @POST("/testSdkPost")
+  @POST("/test/testSdkPost")
   Call<ResultData<Void>> testSdkPost(@Body UserSdk request);
 
 

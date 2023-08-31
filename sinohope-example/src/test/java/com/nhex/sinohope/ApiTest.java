@@ -132,8 +132,8 @@ public class ApiTest {
   @Test
   public void testSdkVerifyGet() {
     String apiKey = "3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
-    String signature = "304602210087573fbe4188a00fcd911ae8216b3bc9e47fec6b3d4268647564493bea3d81ca022100cc24429c0c5ba108aa33c224f605c70ad5c6010ff1c1742e320ee90d5111502a";
-    String paramSignature = "datakey=key&value=valuepath/testSdkGettimestamp1693467698077version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    String signature = "3045022100e8ec2e4268afa90f2ce32f9ee6a17c6594d13584f6d2f7e14017c037eab021f3022034b71ba605b68b9d8fde88ab88c695d4e9446632c6d1e8652c442ad761480e23";
+    String paramSignature = "datakey=key&value=valuepath/test/testSdkGettimestamp1693468183730version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
     boolean verifySign = SignerUtil.verifySign(apiKey, signature, paramSignature);
     System.out.println(verifySign);
   }
@@ -141,8 +141,8 @@ public class ApiTest {
   @Test
   public void testSdkVerifyPost() {
     String apiKey = "3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
-    String signature = "3045022100a85e05936e9e3af9f3e896b739cb37d807380b48b4808017edc7bcdf3f20d5c9022021e8262d5d3940e8191537857609dbac11aff86fe918fc95c89a879f413b02a1";
-    String paramSignature = "data{\"key\":\"key\",\"value\":\"value\"}path/testSdkPosttimestamp1693467931151version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    String signature = "3046022100cc2dbb5605253b23949c4f50e2826112a2c661ab830af14386a432ad86885343022100d0b378e74a49cd856039f898d9de5a7af3ae284de951244ee57d85adf9786752";
+    String paramSignature = "data{\"key\":\"key\",\"value\":\"value\"}path/test/testSdkPosttimestamp1693468274893version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
     boolean verifySign = SignerUtil.verifySign(apiKey, signature, paramSignature);
     System.out.println(verifySign);
   }
