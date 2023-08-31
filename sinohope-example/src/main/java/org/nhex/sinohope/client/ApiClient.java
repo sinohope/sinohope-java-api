@@ -1,7 +1,7 @@
 package org.nhex.sinohope.client;
 
-import org.nhex.sinohope.pojo.EmailLoginFeignRequest;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
+import org.nhex.sinohope.pojo.UserSdk;
 
 /**
  * @author wangfengchen
@@ -12,6 +12,7 @@ public interface ApiClient {
 
   ResultData<Void> getValueByApiKey(String apiKey);
 
+
   ResultData<Void> existId();
 
   ResultData<Void> transfer(TransferRequest request);
@@ -20,7 +21,9 @@ public interface ApiClient {
 
   ResultData<Void> add3(SettlementFinishDTO request);
 
-  ResultData<Void> testPost2(EmailLoginFeignRequest request);
+  ResultData<Void> testSdkGet(String key, String value);
+
+  ResultData<Void> testSdkPost(UserSdk request);
 
 
 }

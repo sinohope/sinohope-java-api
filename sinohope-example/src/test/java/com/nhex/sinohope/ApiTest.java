@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.nhex.sinohope.api.sign.ECDSA;
 import org.nhex.sinohope.api.util.SignerUtil;
 import org.nhex.sinohope.client.*;
-import org.nhex.sinohope.pojo.EmailLoginFeignRequest;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
 import org.nhex.sinohope.pojo.SettlementFinishDetailDTO;
+import org.nhex.sinohope.pojo.UserSdk;
 
 import java.security.KeyPair;
 import java.util.*;
@@ -78,19 +78,6 @@ public class ApiTest {
   }
 
   @Test
-  public void testPost2() {
-    EmailLoginFeignRequest request = new EmailLoginFeignRequest();
-    request.setClientType(3);
-    request.setKickOutTag("mpc:login:type:APP");
-    request.setAccessTokenExpiration(60000000L);
-    request.setRefreshTokenExpiration(60000000L);
-    request.setExchangeId(1002);
-    request.setEmail("wangfengchen@newhuotech.com");
-    ResultData<Void> res = client.testPost2(request);
-    System.out.println(res);
-  }
-
-  @Test
   public void testGetWithParam() {
     ResultData<Void> res = client.getValueByApiKey(Env.DEVELOP.publicKey);
     System.out.println(res);
@@ -128,10 +115,35 @@ public class ApiTest {
   }
 
   @Test
-  public void testVerify() {
-    boolean verifySign = SignerUtil.verifySign("3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d",
-        "304502200668ed857706a4d635c5dca7e208cf7f5a0a7c8e91645f87613fcefa0007647602210083313d030e8a3ef8cb6909286a7a06de7cdd23a4333d56358cc903def383eb56",
-        "data{\"clientType\":3,\"kickOutTag\":\"mpc:login:type:APP\",\"accessTokenExpiration\":60000000,\"refreshTokenExpiration\":60000000,\"exchangeId\":1002,\"email\":\"wangfengchen@newhuotech.com\"}path/ua/appKey/testtimestamp1693316852274version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d");
+  public void testSdkGet() {
+    ResultData<Void> res = client.testSdkGet("key", "value");
+    System.out.println(res);
+  }
+
+  @Test
+  public void testSdkPost() {
+    UserSdk request = new UserSdk();
+    request.setKey("key");
+    request.setValue("value");
+    ResultData<Void> res = client.testSdkPost(request);
+    System.out.println(res);
+  }
+
+  @Test
+  public void testSdkVerifyGet() {
+    String apiKey = "3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    String signature = "304602210087573fbe4188a00fcd911ae8216b3bc9e47fec6b3d4268647564493bea3d81ca022100cc24429c0c5ba108aa33c224f605c70ad5c6010ff1c1742e320ee90d5111502a";
+    String paramSignature = "datakey=key&value=valuepath/testSdkGettimestamp1693467698077version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    boolean verifySign = SignerUtil.verifySign(apiKey, signature, paramSignature);
+    System.out.println(verifySign);
+  }
+
+  @Test
+  public void testSdkVerifyPost() {
+    String apiKey = "3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    String signature = "3045022100a85e05936e9e3af9f3e896b739cb37d807380b48b4808017edc7bcdf3f20d5c9022021e8262d5d3940e8191537857609dbac11aff86fe918fc95c89a879f413b02a1";
+    String paramSignature = "data{\"key\":\"key\",\"value\":\"value\"}path/testSdkPosttimestamp1693467931151version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    boolean verifySign = SignerUtil.verifySign(apiKey, signature, paramSignature);
     System.out.println(verifySign);
   }
 

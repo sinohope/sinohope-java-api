@@ -1,8 +1,8 @@
 package org.nhex.sinohope.client;
 
 import org.nhex.sinohope.api.sign.ECDSA;
-import org.nhex.sinohope.pojo.EmailLoginFeignRequest;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
+import org.nhex.sinohope.pojo.UserSdk;
 
 import static org.nhex.sinohope.client.ApiServiceGenerator.createService;
 import static org.nhex.sinohope.client.ApiServiceGenerator.executeSync;
@@ -50,8 +50,14 @@ public class ApiClientImpl implements ApiClient {
   }
 
   @Override
-  public ResultData<Void> testPost2(EmailLoginFeignRequest request) {
-    return executeSync(apiService.testPost2(request));
+  public ResultData<Void> testSdkGet(String key, String value) {
+    return executeSync(apiService.testSdkGet(key, value));
   }
+
+  @Override
+  public ResultData<Void> testSdkPost(UserSdk request) {
+    return executeSync(apiService.testSdkPost(request));
+  }
+
 
 }

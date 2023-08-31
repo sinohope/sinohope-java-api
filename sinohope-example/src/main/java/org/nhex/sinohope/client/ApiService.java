@@ -1,7 +1,7 @@
 package org.nhex.sinohope.client;
 
-import org.nhex.sinohope.pojo.EmailLoginFeignRequest;
 import org.nhex.sinohope.pojo.SettlementFinishDTO;
+import org.nhex.sinohope.pojo.UserSdk;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -31,9 +31,11 @@ public interface ApiService {
   @POST("/user-auth-c/ua/waas/add")
   Call<ResultData<Void>> add3(@Body SettlementFinishDTO request);
 
-  @POST("/ua/appKey/test")
+  @GET("/testSdkGet")
+  Call<ResultData<Void>> testSdkGet(@Query("key") String key, @Query("value") String value);
 
-  Call<ResultData<Void>> testPost2(@Body EmailLoginFeignRequest request);
+  @POST("/testSdkPost")
+  Call<ResultData<Void>> testSdkPost(@Body UserSdk request);
 
 
 }
