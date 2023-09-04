@@ -9,6 +9,12 @@ public class WalletTransactionSpeedupWAASParam {
      * 请求方交易的requestId
      */
     private String requestId;
+
+    /**
+     * 交易Id
+     */
+    private String sinoId;
+
     /**
      * 交易gasLimit，燃料上限，ETH 账号模型适用
      */
