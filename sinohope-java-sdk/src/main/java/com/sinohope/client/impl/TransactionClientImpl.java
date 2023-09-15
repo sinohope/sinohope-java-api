@@ -2,7 +2,7 @@ package com.sinohope.client.impl;
 
 import com.sinohope.client.TransactionClient;
 import com.sinohope.request.SignatureWAASResult;
-import com.sinohope.request.TransferHistoryWAASDTO;
+import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.request.WalletTransactionCancelWAASParam;
 import com.sinohope.request.WalletTransactionQueryWAASParam;
 import com.sinohope.request.WalletTransactionQueryWAASRequestIdParam;
@@ -12,7 +12,6 @@ import com.sinohope.request.WalletTransactionSendDataWAASParam;
 import com.sinohope.request.WalletTransactionSendWAASParam;
 import com.sinohope.request.WalletTransactionSpeedupWAASParam;
 import com.sinohope.request.signMessageParam;
-import com.sinohope.response.CreateSettlementTxRes;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import com.sinohope.service.TransactionService;
@@ -35,42 +34,42 @@ public class TransactionClientImpl implements TransactionClient {
   }
 
   @Override
-  public ResultData<PageData<TransferHistoryWAASDTO>> walletTransactionList(WalletTransactionQueryWAASParam param) {
+  public ResultData<PageData<WaasTransactionDTO>> walletTransactionList(WalletTransactionQueryWAASParam param) {
     return executeSync(transactionService.walletTransactionList(param));
   }
 
   @Override
-  public ResultData<List<TransferHistoryWAASDTO>> walletTransactionListByRequestId(WalletTransactionQueryWAASRequestIdParam param) {
+  public ResultData<PageData<WaasTransactionDTO>> walletTransactionListByRequestId(WalletTransactionQueryWAASRequestIdParam param) {
     return executeSync(transactionService.walletTransactionListByRequestId(param));
   }
 
   @Override
-  public ResultData<List<TransferHistoryWAASDTO>> walletTransactionListByTransactionId(WalletTransactionQueryWAASSinoIdParam sinoIds) {
+  public ResultData<PageData<WaasTransactionDTO>> walletTransactionListByTransactionId(WalletTransactionQueryWAASSinoIdParam sinoIds) {
     return executeSync(transactionService.walletTransactionListByTransactionId(sinoIds));
   }
 
   @Override
-  public ResultData<List<TransferHistoryWAASDTO>> walletTransactionListByTxHash(WalletTransactionQueryWAASTxHashdParam txHash) {
+  public ResultData<PageData<WaasTransactionDTO>> walletTransactionListByTxHash(WalletTransactionQueryWAASTxHashdParam txHash) {
     return executeSync(transactionService.walletTransactionListByTxHash(txHash));
   }
 
   @Override
-  public ResultData<CreateSettlementTxRes> createWaasTransfer(WalletTransactionSendWAASParam param) {
+  public ResultData<WaasTransactionDTO> createWaasTransfer(WalletTransactionSendWAASParam param) {
     return executeSync(transactionService.createWaasTransfer(param));
   }
 
   @Override
-  public ResultData<CreateSettlementTxRes> speedupWaasTransfer(WalletTransactionSpeedupWAASParam param) {
+  public ResultData<WaasTransactionDTO> speedupWaasTransfer(WalletTransactionSpeedupWAASParam param) {
     return executeSync(transactionService.speedupWaasTransfer(param));
   }
 
   @Override
-  public ResultData<CreateSettlementTxRes> waasCancelTransaction(WalletTransactionCancelWAASParam param) {
+  public ResultData<WaasTransactionDTO> waasCancelTransaction(WalletTransactionCancelWAASParam param) {
     return executeSync(transactionService.waasCancelTransaction(param));
   }
 
   @Override
-  public ResultData<CreateSettlementTxRes> createWaasTransaction(WalletTransactionSendDataWAASParam param) {
+  public ResultData<WaasTransactionDTO> createWaasTransaction(WalletTransactionSendDataWAASParam param) {
     return executeSync(transactionService.createWaasTransaction(param));
   }
 

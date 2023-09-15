@@ -9,12 +9,10 @@ public class WalletTransactionCancelWAASParam {
      * 请求方的requestId
      */
     private String requestId;
-
     /**
      * 交易Id
      */
     private String sinoId;
-
     /**
      * 链标识
      */

@@ -1,7 +1,7 @@
 package com.sinohope.service;
 
 import com.sinohope.request.SignatureWAASResult;
-import com.sinohope.request.TransferHistoryWAASDTO;
+import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.request.WalletTransactionCancelWAASParam;
 import com.sinohope.request.WalletTransactionQueryWAASParam;
 import com.sinohope.request.WalletTransactionQueryWAASRequestIdParam;
@@ -11,7 +11,6 @@ import com.sinohope.request.WalletTransactionSendDataWAASParam;
 import com.sinohope.request.WalletTransactionSendWAASParam;
 import com.sinohope.request.WalletTransactionSpeedupWAASParam;
 import com.sinohope.request.signMessageParam;
-import com.sinohope.response.CreateSettlementTxRes;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import retrofit2.Call;
@@ -33,7 +32,7 @@ public interface TransactionService {
      * @return
      */
     @POST("/v1/waas/mpc/transaction/list_transactions")
-    Call<ResultData<PageData<TransferHistoryWAASDTO>>> walletTransactionList(@Body WalletTransactionQueryWAASParam param);
+    Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionList(@Body WalletTransactionQueryWAASParam param);
 
 
     /**
@@ -43,7 +42,7 @@ public interface TransactionService {
      * @return
      */
     @POST("/v1/waas/mpc/transaction/transactions_by_request_ids")
-    Call<ResultData<List<TransferHistoryWAASDTO>>> walletTransactionListByRequestId(@Body WalletTransactionQueryWAASRequestIdParam param);
+    Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionListByRequestId(@Body WalletTransactionQueryWAASRequestIdParam param);
 
 
     /**
@@ -53,7 +52,7 @@ public interface TransactionService {
      * @return
      */
     @POST("/v1/waas/mpc/transaction/transactions_by_sino_ids")
-    Call<ResultData<List<TransferHistoryWAASDTO>>> walletTransactionListByTransactionId(@Body WalletTransactionQueryWAASSinoIdParam sinoIds);
+    Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionListByTransactionId(@Body WalletTransactionQueryWAASSinoIdParam sinoIds);
 
     /**
      * 根据txHash查询交易列表
@@ -62,7 +61,7 @@ public interface TransactionService {
      * @return
      */
     @POST("/v1/waas/mpc/transaction/transactions_by_tx_hash")
-    Call<ResultData<List<TransferHistoryWAASDTO>>> walletTransactionListByTxHash(@Body WalletTransactionQueryWAASTxHashdParam txHash);
+    Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionListByTxHash(@Body WalletTransactionQueryWAASTxHashdParam txHash);
 
     /**
      * 发起转账交易
@@ -72,7 +71,7 @@ public interface TransactionService {
      * @throws Exception
      */
     @POST("/v1/waas/mpc/transaction/create_transfer")
-    Call<ResultData<CreateSettlementTxRes>> createWaasTransfer(@Body WalletTransactionSendWAASParam param);
+    Call<ResultData<WaasTransactionDTO>> createWaasTransfer(@Body WalletTransactionSendWAASParam param);
 
     /**
      * 发起加速交易
@@ -82,7 +81,7 @@ public interface TransactionService {
      * @throws Exception
      */
     @POST("/v1/waas/mpc/transaction/speedup_transaction")
-    Call<ResultData<CreateSettlementTxRes>> speedupWaasTransfer(@Body  WalletTransactionSpeedupWAASParam param);
+    Call<ResultData<WaasTransactionDTO>> speedupWaasTransfer(@Body  WalletTransactionSpeedupWAASParam param);
 
 
     /**
@@ -93,7 +92,7 @@ public interface TransactionService {
      * @throws Exception
      */
     @POST("/v1/waas/mpc/transaction/cancel_transaction")
-    Call<ResultData<CreateSettlementTxRes>> waasCancelTransaction(@Body WalletTransactionCancelWAASParam param);
+    Call<ResultData<WaasTransactionDTO>> waasCancelTransaction(@Body WalletTransactionCancelWAASParam param);
 
     /**
      * 发起任意交易
@@ -103,7 +102,7 @@ public interface TransactionService {
      * @throws Exception
      */
     @POST("/v1/waas/mpc/transaction/create_transaction")
-    Call<ResultData<CreateSettlementTxRes>> createWaasTransaction(@Body  WalletTransactionSendDataWAASParam param);
+    Call<ResultData<WaasTransactionDTO>> createWaasTransaction(@Body  WalletTransactionSendDataWAASParam param);
 
 
     /**

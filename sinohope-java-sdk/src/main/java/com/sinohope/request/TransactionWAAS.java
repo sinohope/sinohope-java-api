@@ -1,6 +1,6 @@
 package com.sinohope.request;
 
-import com.sinohope.response.CreateSettlementTxRes;
+import com.sinohope.response.WaasTransactionDTO;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -111,10 +111,10 @@ public class TransactionWAAS {
     /**
      * utxo input
      */
-    private List<CreateSettlementTxRes.VinItem> vin;
+    private List<WaasTransactionDTO.VinItem> vin;
     /**
      * 交易output
      */
-    private List<CreateSettlementTxRes.VoutItem> vout;
+    private List<WaasTransactionDTO.VoutItem> vout;
 
 }
