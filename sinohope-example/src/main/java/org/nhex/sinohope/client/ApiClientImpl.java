@@ -60,8 +60,8 @@ public class ApiClientImpl implements ApiClient {
   }
 
   @Override
-  public ResultData<Void> testSdkPostNoBody() {
-    return executeSync(apiService.testSdkPostNoBody());
+  public ResultData<Void> testSdkPostNoParameters() {
+    return executeSync(apiService.testSdkPostNoParameters());
   }
 
 

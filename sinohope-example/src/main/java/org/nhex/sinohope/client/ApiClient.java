@@ -25,7 +25,7 @@ public interface ApiClient {
 
   ResultData<Void> testSdkPost(UserSdk request);
 
-  ResultData<Void> testSdkPostNoBody();
+  ResultData<Void> testSdkPostNoParameters();
 
 
 }

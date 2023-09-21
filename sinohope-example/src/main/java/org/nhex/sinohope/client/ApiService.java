@@ -37,8 +37,8 @@ public interface ApiService {
   @POST("/test/testSdkPost")
   Call<ResultData<Void>> testSdkPost(@Body UserSdk request);
 
-  @POST("/v1/testSdkPostNoBody")
-  Call<ResultData<Void>> testSdkPostNoBody();
+  @POST("/v1/testSdkPostNoParameters")
+  Call<ResultData<Void>> testSdkPostNoParameters();
 
 
 }
