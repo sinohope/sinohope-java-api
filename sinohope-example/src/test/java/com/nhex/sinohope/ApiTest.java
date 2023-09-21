@@ -163,9 +163,9 @@ public class ApiTest {
   }
 
   public static void main(String[] args) {
-    String apiKey = "3056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
-    String signature = "30450220381219f70dd766e2e417142bde93c8ce5b387de6ccb2e92ed17ea5ce31aeb630022100a2d9da9bb13dd83712040d63a74cde1850111abc779071b710e85ffe2a374579";
-    String paramSignature = "datapath/v1/testSdkPostNoParameterstimestamp1695277889626version1.0.03056301006072a8648ce3d020106052b8104000a03420004d8caf9385ee3f28df77eab42a0da4b8dc9462a8ad39dbb224c2802cc377df9dc09ac23d04748b40c2897d91bbd7fe859476c6f6fe9b2aa82607e8a48f9b7ac0d";
+    String apiKey = "3059301306072a8648ce3d020106082a8648ce3d030107034200045e7fd47ab181bf36528ead76730223f7a06333ccd1307adaedbfde0f26a715e39973f6434e1a60f9cf80a5c382824db1ff07c4d28f06eba4da4502e60cf5e7ef";
+    String signature = "304502200faa004cff3d456c79b19e17c87af00661b7b3d8aaa53a174c075b3f0ab3b855022100a2825790fb579bb2413c001b84bab75b675cfc27b69f45ae1986e2b44a02f709";
+    String paramSignature = "data{\"pageIndex\":0,\"pageSize\":10}path/v1/waas/mpc/wallet/list_walletstimestamp1695283096468version1.0.03059301306072a8648ce3d020106082a8648ce3d030107034200045e7fd47ab181bf36528ead76730223f7a06333ccd1307adaedbfde0f26a715e39973f6434e1a60f9cf80a5c382824db1ff07c4d28f06eba4da4502e60cf5e7ef";
     boolean verifySign = SignerUtil.verifySign(apiKey, signature, paramSignature);
     System.out.println(verifySign);
   }
