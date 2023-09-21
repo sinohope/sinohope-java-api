@@ -59,5 +59,10 @@ public class ApiClientImpl implements ApiClient {
     return executeSync(apiService.testSdkPost(request));
   }
 
+  @Override
+  public ResultData<Void> testSdkPostNoBody() {
+    return executeSync(apiService.testSdkPostNoBody());
+  }
+
 
 }
