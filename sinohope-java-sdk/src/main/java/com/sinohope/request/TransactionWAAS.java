@@ -1,5 +1,7 @@
 package com.sinohope.request;
 
+import com.sinohope.response.VinItem;
+import com.sinohope.response.VoutItem;
 import com.sinohope.response.WaasTransactionDTO;
 import lombok.Data;
 
@@ -111,10 +113,10 @@ public class TransactionWAAS {
     /**
      * utxo input
      */
-    private List<WaasTransactionDTO.VinItem> vin;
+    private List<VinItem> vin;
     /**
      * 交易output
      */
-    private List<WaasTransactionDTO.VoutItem> vout;
+    private List<VoutItem> vout;
 
 }

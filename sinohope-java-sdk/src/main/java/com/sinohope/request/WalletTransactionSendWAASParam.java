@@ -70,5 +70,6 @@ public class WalletTransactionSendWAASParam {
      * 金库id
      */
     private String vaultId;
+    private String note;
 
 }

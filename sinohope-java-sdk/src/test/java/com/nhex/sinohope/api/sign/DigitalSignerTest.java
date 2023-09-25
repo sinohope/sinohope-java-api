@@ -1,6 +1,8 @@
 package com.nhex.sinohope.api.sign;
 
 
+import com.sinohope.client.TransactionClient;
+import com.sinohope.request.WalletTransactionSendWAASParam;
 import org.bouncycastle.util.encoders.Hex;
 import com.sinohope.sign.DigitalSigner;
 import org.junit.jupiter.api.BeforeAll;
