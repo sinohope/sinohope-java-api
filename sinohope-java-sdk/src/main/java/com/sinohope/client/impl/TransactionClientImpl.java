@@ -1,17 +1,9 @@
 package com.sinohope.client.impl;
 
 import com.sinohope.client.TransactionClient;
-import com.sinohope.request.SignatureWAASResult;
+import com.sinohope.request.*;
+import com.sinohope.response.FeeDTO;
 import com.sinohope.response.WaasTransactionDTO;
-import com.sinohope.request.WalletTransactionCancelWAASParam;
-import com.sinohope.request.WalletTransactionQueryWAASParam;
-import com.sinohope.request.WalletTransactionQueryWAASRequestIdParam;
-import com.sinohope.request.WalletTransactionQueryWAASSinoIdParam;
-import com.sinohope.request.WalletTransactionQueryWAASTxHashdParam;
-import com.sinohope.request.WalletTransactionSendDataWAASParam;
-import com.sinohope.request.WalletTransactionSendWAASParam;
-import com.sinohope.request.WalletTransactionSpeedupWAASParam;
-import com.sinohope.request.signMessageParam;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import com.sinohope.service.TransactionService;
@@ -77,4 +69,11 @@ public class TransactionClientImpl implements TransactionClient {
   public ResultData<SignatureWAASResult> web3SignMessage(signMessageParam param) {
     return executeSync(transactionService.web3SignMessage(param));
   }
+
+  @Override
+  public ResultData<FeeDTO> transactionFee(TransactionFeeParam param) {
+    return executeSync(transactionService.transactionFee(param));
+  }
+
+
 }

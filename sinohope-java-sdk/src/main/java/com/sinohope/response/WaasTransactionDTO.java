@@ -14,9 +14,9 @@ public class WaasTransactionDTO {
     /**
      * sinoId
      */
-    private Long  sinoId;
+    private String sinoId;
     private String requestId;
-    private Long replacedSinoId;
+    private String replacedSinoId;
 
     /**
      * 网络

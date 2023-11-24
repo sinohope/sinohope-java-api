@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.sinohope</groupId>
         <artifactId>sinohope-java-api</artifactId>
-        <version>2.0.3</version>
+        <version>2.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sinohope-example</artifactId>
