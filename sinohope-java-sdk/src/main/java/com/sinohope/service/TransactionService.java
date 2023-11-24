@@ -1,16 +1,8 @@
 package com.sinohope.service;
 
-import com.sinohope.request.SignatureWAASResult;
+import com.sinohope.request.*;
+import com.sinohope.response.FeeDTO;
 import com.sinohope.response.WaasTransactionDTO;
-import com.sinohope.request.WalletTransactionCancelWAASParam;
-import com.sinohope.request.WalletTransactionQueryWAASParam;
-import com.sinohope.request.WalletTransactionQueryWAASRequestIdParam;
-import com.sinohope.request.WalletTransactionQueryWAASSinoIdParam;
-import com.sinohope.request.WalletTransactionQueryWAASTxHashdParam;
-import com.sinohope.request.WalletTransactionSendDataWAASParam;
-import com.sinohope.request.WalletTransactionSendWAASParam;
-import com.sinohope.request.WalletTransactionSpeedupWAASParam;
-import com.sinohope.request.signMessageParam;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import retrofit2.Call;
@@ -114,5 +106,15 @@ public interface TransactionService {
      */
     @POST("/v1/waas/mpc/web3/sign_message")
     Call<ResultData<SignatureWAASResult>> web3SignMessage(@Body signMessageParam param);
+
+    /**
+     * 查询交易所需交易费用
+     *
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    @POST("/v1/waas/mpc/transaction/fee")
+    Call<ResultData<FeeDTO>> transactionFee(@Body TransactionFeeParam param);
 
 }
