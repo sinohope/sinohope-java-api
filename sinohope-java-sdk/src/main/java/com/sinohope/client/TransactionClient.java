@@ -2,11 +2,11 @@ package com.sinohope.client;
 
 import com.sinohope.request.*;
 import com.sinohope.response.FeeDTO;
+import com.sinohope.response.SignResultDTO;
 import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 
-import java.util.List;
 
 /**
  * 交易相关接口
@@ -105,5 +105,14 @@ public interface TransactionClient {
      * @throws Exception
      */
     ResultData<FeeDTO> transactionFee(TransactionFeeParam param);
+
+    /**
+     * 查询签名结果
+     *
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    ResultData<SignResultDTO> signResult(SignResultParam param);
 
 }

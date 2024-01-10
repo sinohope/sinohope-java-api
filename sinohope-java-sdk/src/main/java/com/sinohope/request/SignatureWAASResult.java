@@ -15,4 +15,13 @@ public class SignatureWAASResult {
      */
     private String messageHash;
 
+    /**
+     * 签名结果
+     */
+    private String signature;
+    /**
+     * 状态（进行中：0，成功：1，失败：2）
+     */
+    private Integer state;
+
 }
