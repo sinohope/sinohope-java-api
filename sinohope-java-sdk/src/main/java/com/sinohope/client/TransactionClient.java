@@ -7,6 +7,7 @@ import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 
+import java.util.List;
 
 /**
  * 交易相关接口
