@@ -1,9 +1,6 @@
 package com.sinohope.client;
 
-import com.sinohope.client.impl.MpcNodeClientImpl;
-import com.sinohope.client.impl.SeniorClientClientImpl;
-import com.sinohope.client.impl.TransactionClientImpl;
-import com.sinohope.client.impl.WalletAndAddressClientImpl;
+import com.sinohope.client.impl.*;
 import com.sinohope.constant.ErrorCodeConstant;
 import com.sinohope.exception.MpcException;
 import com.sinohope.sign.ECDSA;
@@ -60,6 +57,10 @@ public class ClientFactory {
     return new SeniorClientClientImpl(signer, baseUrl, publicKey, privateKey);
   }
 
+  public Brc20Client newBrc20Client() {
+    this.check();
+    return new Brc20ClientImpl(signer, baseUrl, publicKey, privateKey);
+  }
   void check(){
     if (StringUtils.isBlank(this.baseUrl)) {
       throw new MpcException(ErrorCodeConstant.PARAM_ERROR_CODE,"baseurl can not be empty");
