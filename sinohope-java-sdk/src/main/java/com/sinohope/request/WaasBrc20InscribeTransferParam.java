@@ -25,6 +25,7 @@ public class WaasBrc20InscribeTransferParam {
      * 手续费 对于 UTXO 类的非EVM兼容链的交易,自设置fee, 如参数为 UTXO 资产转账提供，表示每字节的手续费
      */
     private String fee;
+    private String feeRate;
 
     /**
      * 交易gasPrice，燃料价格，ETH 账号模型适用，单位为 wei

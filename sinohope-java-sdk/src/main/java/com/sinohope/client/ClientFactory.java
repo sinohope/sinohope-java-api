@@ -61,6 +61,21 @@ public class ClientFactory {
     this.check();
     return new Brc20ClientImpl(signer, baseUrl, publicKey, privateKey);
   }
+
+  public RunesClient newRunesClient() {
+    this.check();
+    return new RunesClientImpl(signer, baseUrl, publicKey, privateKey);
+  }
+
+
+
+  public StakingClient newStakingClient() {
+    this.check();
+    return new StakingClientImpl(signer, baseUrl, publicKey, privateKey);
+  }
+
+
+
   void check(){
     if (StringUtils.isBlank(this.baseUrl)) {
       throw new MpcException(ErrorCodeConstant.PARAM_ERROR_CODE,"baseurl can not be empty");

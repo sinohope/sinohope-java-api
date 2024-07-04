@@ -51,6 +51,8 @@ public class WalletTransactionSendWAASParam {
      */
     private String fee;
 
+    private String feeRate;
+
     /**
      * 交易gasPrice，燃料价格，ETH 账号模型适用，单位为 wei
      */
@@ -71,5 +73,5 @@ public class WalletTransactionSendWAASParam {
      */
     private String vaultId;
     private String note;
-
+    private String utxoType;
 }

@@ -21,4 +21,5 @@ public class WaasBrc20InscribeOneStopTransferParam {
     private String note;
     private String ticker;
     private String fee;
+    private String feeRate;
 }

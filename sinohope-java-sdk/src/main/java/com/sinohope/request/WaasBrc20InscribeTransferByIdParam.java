@@ -20,4 +20,6 @@ public class WaasBrc20InscribeTransferByIdParam {
     private String from;
 
     private String to;
+    private String fee;
+    private String feeRate;
 }
