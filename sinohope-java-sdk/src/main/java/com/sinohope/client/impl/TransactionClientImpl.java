@@ -47,6 +47,11 @@ public class TransactionClientImpl implements TransactionClient {
   }
 
   @Override
+  public ResultData<PageData<VinDTO>> pageAvailableVouts(WaasPageUtxoReq req) {
+    return executeSync(transactionService.pageAvailableVouts(req));
+  }
+
+  @Override
   public ResultData<WaasTransactionDTO> createWaasTransfer(WalletTransactionSendWAASParam param) {
     return executeSync(transactionService.createWaasTransfer(param));
   }

@@ -2,6 +2,8 @@ package com.sinohope.request;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class WalletTransactionSendWAASParam {
 
@@ -74,4 +76,6 @@ public class WalletTransactionSendWAASParam {
     private String vaultId;
     private String note;
     private String utxoType;
+
+    private List<VinDTO> vins;
 }

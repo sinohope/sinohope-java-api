@@ -55,6 +55,14 @@ public interface TransactionService {
      */
     @POST("/v1/waas/mpc/transaction/transactions_by_tx_hash")
     Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionListByTxHash(@Body WalletTransactionQueryWAASTxHashdParam txHash);
+    /**
+     * 根据txHash查询交易列表
+     *
+     * @param txHash
+     * @return
+     */
+    @POST("/v1/waas/mpc/transaction/page_available_vouts")
+    Call<ResultData<PageData<VinDTO>>> pageAvailableVouts(@Body WaasPageUtxoReq txHash);
 
     /**
      * 发起转账交易

@@ -51,6 +51,8 @@ public interface TransactionClient {
      */
     ResultData<PageData<WaasTransactionDTO>> walletTransactionListByTxHash(WalletTransactionQueryWAASTxHashdParam txHash);
 
+    ResultData<PageData<VinDTO>> pageAvailableVouts(WaasPageUtxoReq req);
+
     /**
      * 发起转账交易
      *
