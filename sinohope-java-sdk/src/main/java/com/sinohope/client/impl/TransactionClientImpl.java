@@ -3,6 +3,7 @@ package com.sinohope.client.impl;
 import com.sinohope.client.TransactionClient;
 import com.sinohope.request.*;
 import com.sinohope.response.FeeDTO;
+import com.sinohope.response.SignResultDTO;
 import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
@@ -46,6 +47,11 @@ public class TransactionClientImpl implements TransactionClient {
   }
 
   @Override
+  public ResultData<PageData<VinDTO>> pageAvailableVouts(WaasPageUtxoReq req) {
+    return executeSync(transactionService.pageAvailableVouts(req));
+  }
+
+  @Override
   public ResultData<WaasTransactionDTO> createWaasTransfer(WalletTransactionSendWAASParam param) {
     return executeSync(transactionService.createWaasTransfer(param));
   }
@@ -74,6 +80,9 @@ public class TransactionClientImpl implements TransactionClient {
   public ResultData<FeeDTO> transactionFee(TransactionFeeParam param) {
     return executeSync(transactionService.transactionFee(param));
   }
-
+  @Override
+  public ResultData<SignResultDTO> signResult(SignResultParam param) {
+    return executeSync(transactionService.signResult(param));
+  }
 
 }

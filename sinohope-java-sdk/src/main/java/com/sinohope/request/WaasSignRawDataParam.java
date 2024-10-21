@@ -37,7 +37,16 @@ public class WaasSignRawDataParam {
 
     private String hdPath = "m/1/1/60/0";
 
+    /**
+     * 未提供或值为0 时（当前默认），使用创建地址时所指定的算法及曲线类型（ecdsa-secp256k1/eddsa-ed25519）执行默认的签名，
+     * 值为 1 时（只对 ecdsa-secp256k1 的密钥有效）执行 符合BIP340 标准的 Schnorr 签名（支持 Bitcoin 铭文reveal交易）
+     * 值为 2 时（只对 ecdsa-secp256k1 的密钥有效）执行 Taproot 签名
+     */
+    private Integer algorithmType;
 
-
+    /**
+     * taproot签名特有的字段，代表script树根
+     */
+    private String tapScriptRoot;
 
 }

@@ -24,6 +24,7 @@ public class WaasTransactionDTO {
     private String chainSymbol;
     private Integer txDirection;
     private Integer state;
+    private String failReason;
     private String note;
 
     /**
@@ -31,6 +32,18 @@ public class WaasTransactionDTO {
      */
     private TxInfo transaction;
 
+
+    /**
+     * brc20Detail
+     */
+    private Brc20Detail brc20Detail;
+
+    /**
+     * brc20Detail
+     */
+    private List brc20Details;
+
+    private List runeDetails;
 
 
 }

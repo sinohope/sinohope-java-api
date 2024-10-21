@@ -2,6 +2,7 @@ package com.sinohope.client;
 
 import com.sinohope.request.*;
 import com.sinohope.response.FeeDTO;
+import com.sinohope.response.SignResultDTO;
 import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
@@ -49,6 +50,8 @@ public interface TransactionClient {
      * @return
      */
     ResultData<PageData<WaasTransactionDTO>> walletTransactionListByTxHash(WalletTransactionQueryWAASTxHashdParam txHash);
+
+    ResultData<PageData<VinDTO>> pageAvailableVouts(WaasPageUtxoReq req);
 
     /**
      * 发起转账交易
@@ -105,5 +108,14 @@ public interface TransactionClient {
      * @throws Exception
      */
     ResultData<FeeDTO> transactionFee(TransactionFeeParam param);
+
+    /**
+     * 查询签名结果
+     *
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    ResultData<SignResultDTO> signResult(SignResultParam param);
 
 }

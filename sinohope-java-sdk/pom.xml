@@ -7,12 +7,12 @@
 
     <groupId>com.sinohope</groupId>
     <artifactId>sinohope-java-sdk</artifactId>
-    <version>2.0.4</version>
+    <version>2.0.8</version>
     <packaging>jar</packaging>
 
     <properties>
         <skipTests>true</skipTests>
-        <java.version>8</java.version>
+        <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
+            <version>2.16.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.38</version>
+            <version>2.0.49</version>
         </dependency>
 
         <dependency>
@@ -83,6 +83,8 @@
             <version>2.0.2</version>
         </dependency>
     </dependencies>
+
+
 
     <name>${project.artifactId}</name>
     <description>sinohope java sdk</description>
@@ -163,20 +165,20 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                <version>1.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>sign-artifacts</id>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>sign</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -190,6 +192,7 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>
 

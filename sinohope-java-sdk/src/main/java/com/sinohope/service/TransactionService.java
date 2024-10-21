@@ -2,6 +2,7 @@ package com.sinohope.service;
 
 import com.sinohope.request.*;
 import com.sinohope.response.FeeDTO;
+import com.sinohope.response.SignResultDTO;
 import com.sinohope.response.WaasTransactionDTO;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
@@ -54,6 +55,14 @@ public interface TransactionService {
      */
     @POST("/v1/waas/mpc/transaction/transactions_by_tx_hash")
     Call<ResultData<PageData<WaasTransactionDTO>>> walletTransactionListByTxHash(@Body WalletTransactionQueryWAASTxHashdParam txHash);
+    /**
+     * 根据txHash查询交易列表
+     *
+     * @param txHash
+     * @return
+     */
+    @POST("/v1/waas/mpc/transaction/page_available_vouts")
+    Call<ResultData<PageData<VinDTO>>> pageAvailableVouts(@Body WaasPageUtxoReq txHash);
 
     /**
      * 发起转账交易
@@ -116,5 +125,15 @@ public interface TransactionService {
      */
     @POST("/v1/waas/mpc/transaction/fee")
     Call<ResultData<FeeDTO>> transactionFee(@Body TransactionFeeParam param);
+
+    /**
+     * 查询签名结果
+     *
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    @POST("/v1/waas/mpc/web3/sign_result")
+    Call<ResultData<SignResultDTO>> signResult(@Body SignResultParam param);
 
 }

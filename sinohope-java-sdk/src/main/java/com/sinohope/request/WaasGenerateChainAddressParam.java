@@ -28,4 +28,5 @@ public class WaasGenerateChainAddressParam {
      */
     @NotNull
     private String chainSymbol;
+    private Integer encoding;
 }
