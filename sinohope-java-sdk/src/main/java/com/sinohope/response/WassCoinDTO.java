@@ -3,6 +3,8 @@ package com.sinohope.response;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author yanghaiyu
  * @date 2023/07/19
@@ -10,6 +12,16 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class WassCoinDTO {
+    /**
+     *  链全名
+     */
+    @NotNull
+    private String chainName;
+    /**
+     * 链名称 简称 链标识 具有唯一性
+     */
+    @NotNull
+    private String chainSymbol;
     /**
      * 币种全名称
      */
@@ -23,4 +35,6 @@ public class WassCoinDTO {
      */
     private Integer assetDecimal;
 
+
+    private String contractAddress;
 }

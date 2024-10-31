@@ -14,6 +14,10 @@ public class WaasChainParam {
      */
     private String chainSymbol ;
     private String vaultId;
+    /**
+     * 查询类型：0-普通代币；1-nft；不传默认为0
+     */
+    private Integer queryType;
 
 
 }

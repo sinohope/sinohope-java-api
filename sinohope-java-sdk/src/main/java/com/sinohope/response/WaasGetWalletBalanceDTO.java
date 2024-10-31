@@ -2,6 +2,8 @@ package com.sinohope.response;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class WaasGetWalletBalanceDTO {
     /**
@@ -23,5 +25,7 @@ public class WaasGetWalletBalanceDTO {
      * 币种精度
      */
     private Integer assetDecimal;
+
+    private List<NftInfoDTO> nftInfos;
 
 }
