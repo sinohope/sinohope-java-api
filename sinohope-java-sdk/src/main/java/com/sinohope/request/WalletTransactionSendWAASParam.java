@@ -78,4 +78,6 @@ public class WalletTransactionSendWAASParam {
     private String utxoType;
 
     private List<VinDTO> vins;
+
+    private String tokenId;
 }

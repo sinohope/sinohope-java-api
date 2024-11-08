@@ -11,4 +11,5 @@ public class TransactionFeeParam {
     private String chainSymbol;
     private String amount;
     private String inputData;
+    private String tokenId;
 }
