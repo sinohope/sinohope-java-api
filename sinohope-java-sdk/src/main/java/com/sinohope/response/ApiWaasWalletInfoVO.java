@@ -7,6 +7,10 @@ import java.io.Serializable;
 @Data
 public class ApiWaasWalletInfoVO implements Serializable {
   /**
+   * 请求唯一值
+   */
+  private String requestId;
+  /**
    * 钱包id
    */
   private String walletId;

@@ -75,6 +75,12 @@ public class ClientFactory {
   }
 
 
+  public ApiClient newApiClient() {
+    this.check();
+    return new ApiClientImpl(signer, baseUrl, publicKey, privateKey);
+  }
+
+
 
   void check(){
     if (StringUtils.isBlank(this.baseUrl)) {
