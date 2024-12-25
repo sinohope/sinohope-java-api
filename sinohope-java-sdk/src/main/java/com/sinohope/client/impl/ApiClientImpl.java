@@ -99,4 +99,9 @@ public class ApiClientImpl implements ApiClient {
     public ResultData<PageData<WaasTransactionDTO>> walletTransactionListByRequestId(WalletTransactionQueryWAASRequestIdParam param) {
         return executeSync(apiService.walletTransactionListByRequestId(param));
     }
+
+    @Override
+    public ResultData<WaasAddressCheckDTO> isValidAddress(WaasAddressCheckParam param) {
+        return executeSync(apiService.isValidAddress(param));
+    }
 }

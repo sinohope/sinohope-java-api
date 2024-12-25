@@ -2,6 +2,7 @@ package com.sinohope.service;
 
 import com.sinohope.request.*;
 import com.sinohope.response.ApiWaasVaultInfo;
+import com.sinohope.response.WaasAddressCheckDTO;
 import com.sinohope.response.common.ResultData;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -142,6 +143,14 @@ public interface ApiService {
     @POST("/v1/api/transaction/transactions_by_request_ids")
     Call<ResultData> walletTransactionListByRequestId(@Body WalletTransactionQueryWAASRequestIdParam param);
 
+
+    /**
+     * 检查币种地址是否正确
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/common/is_valid_address")
+    Call<ResultData<WaasAddressCheckDTO>> isValidAddress(@Body WaasAddressCheckParam param);
 
 
 }

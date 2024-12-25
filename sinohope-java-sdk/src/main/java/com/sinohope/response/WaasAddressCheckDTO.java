@@ -12,4 +12,6 @@ public class WaasAddressCheckDTO {
      * 检查结果
      */
     private boolean isValid;
+
+    private boolean isInnerAddress;
 }
