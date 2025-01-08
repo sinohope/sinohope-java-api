@@ -68,7 +68,7 @@ public class WalletTransactionSendWAASParam {
     /**
      * 备注：用于用户自己需要的一些备注信息
      */
-    private String remark="用户交易信息备注";
+    private String remark;
 
     /**
      * 金库id

@@ -3,6 +3,8 @@ package com.sinohope.service;
 import com.sinohope.request.*;
 import com.sinohope.response.ApiWaasVaultInfo;
 import com.sinohope.response.WaasAddressCheckDTO;
+import com.sinohope.response.WaasTransactionDTO;
+import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -142,6 +144,17 @@ public interface ApiService {
      */
     @POST("/v1/api/transaction/transactions_by_request_ids")
     Call<ResultData> walletTransactionListByRequestId(@Body WalletTransactionQueryWAASRequestIdParam param);
+
+
+
+    /**
+     * 交易列表，查询充值提现所有的交易记录
+     *
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/transaction/list_transactions")
+    Call<ResultData> walletTransactionList(@Body WalletTransactionQueryWAASParam param);
 
 
     /**

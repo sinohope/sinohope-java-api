@@ -11,4 +11,5 @@ import javax.validation.constraints.NotNull;
 public class GetSupportedChainsReq {
     @NotNull
     private String vaultId;
+    private Integer rootAccountType;
 }

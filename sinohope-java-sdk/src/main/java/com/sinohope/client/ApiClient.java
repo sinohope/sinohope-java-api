@@ -36,6 +36,8 @@ public interface ApiClient {
 
     ResultData<PageData<WaasTransactionDTO>> walletTransactionListByRequestId(WalletTransactionQueryWAASRequestIdParam param);
 
+    ResultData<PageData<WaasTransactionDTO>> walletTransactionList(WalletTransactionQueryWAASParam param);
+
     ResultData<WaasAddressCheckDTO> isValidAddress(WaasAddressCheckParam param);
 
 }
