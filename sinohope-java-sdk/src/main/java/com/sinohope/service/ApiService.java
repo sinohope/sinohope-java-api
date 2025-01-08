@@ -1,9 +1,7 @@
 package com.sinohope.service;
 
 import com.sinohope.request.*;
-import com.sinohope.response.ApiWaasVaultInfo;
-import com.sinohope.response.WaasAddressCheckDTO;
-import com.sinohope.response.WaasTransactionDTO;
+import com.sinohope.response.*;
 import com.sinohope.response.common.PageData;
 import com.sinohope.response.common.ResultData;
 import retrofit2.Call;
@@ -164,6 +162,42 @@ public interface ApiService {
      */
     @POST("/v1/api/common/is_valid_address")
     Call<ResultData<WaasAddressCheckDTO>> isValidAddress(@Body WaasAddressCheckParam param);
+
+
+    /**
+     * 设置归集策略
+     * @param req
+     * @return
+     */
+    @POST("/v1/api/collect/set_strategy")
+    Call<ResultData> collectionStrategy(@Body CollectionStrategyReq req);
+
+
+    /**
+     * 查询归集策略
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/collect/strategy_lists")
+    Call<ResultData<PageData<CollectStrategyRes>>> collectionStrategyLists(@Body CollectionStrategyListsReq param);
+
+
+    /**
+     * 设置gas加油站
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/collect/set_gas_station")
+    Call<ResultData> setGasStation(@Body SetGasStationReq param);
+
+
+    /**
+     * 查询gas加油站
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/collect/gas_station_lists")
+    Call<ResultData<List<GasStationRes>>> gasStationLists(@Body GasStationListsReq param);
 
 
 }

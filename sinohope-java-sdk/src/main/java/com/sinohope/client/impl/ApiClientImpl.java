@@ -109,4 +109,24 @@ public class ApiClientImpl implements ApiClient {
     public ResultData<WaasAddressCheckDTO> isValidAddress(WaasAddressCheckParam param) {
         return executeSync(apiService.isValidAddress(param));
     }
+
+    @Override
+    public ResultData collectionStrategy(CollectionStrategyReq req) {
+        return executeSync(apiService.collectionStrategy(req));
+    }
+
+    @Override
+    public ResultData<PageData<CollectStrategyRes>> collectionStrategyLists(CollectionStrategyListsReq req) {
+        return executeSync(apiService.collectionStrategyLists(req));
+    }
+
+    @Override
+    public ResultData setGasStation(SetGasStationReq req) {
+        return executeSync(apiService.setGasStation(req));
+    }
+
+    @Override
+    public ResultData<List<GasStationRes>> gasStationLists(GasStationListsReq req) {
+        return executeSync(apiService.gasStationLists(req));
+    }
 }

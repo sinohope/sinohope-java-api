@@ -40,4 +40,11 @@ public interface ApiClient {
 
     ResultData<WaasAddressCheckDTO> isValidAddress(WaasAddressCheckParam param);
 
+    ResultData collectionStrategy(CollectionStrategyReq req);
+
+    ResultData<PageData<CollectStrategyRes>> collectionStrategyLists(CollectionStrategyListsReq req);
+
+    ResultData setGasStation(SetGasStationReq req);
+
+    ResultData<List<GasStationRes>> gasStationLists(GasStationListsReq req);
 }
