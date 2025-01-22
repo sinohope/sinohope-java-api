@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class CollectionStrategyReq {
-    private Long vaultId;
+    private String vaultId;
 
     private String toAddress;
 
@@ -18,10 +18,11 @@ public class CollectionStrategyReq {
 
     private BigDecimal feeLimit;  //选填，如预估当前交易手续费大于阈值，则跳过本轮归集；
 
-    private Integer enabled; //默认0关闭，1开启；关闭后，下一轮归集任务将不再检查当前地址余额；
+    private Integer enabled; //默认0关闭，1开启；关闭后
 
+    private Integer allowExternalAddress;   //是否允许组织外地址为toAddress
 
-    private Integer autoFueling;   //必填，0-光笔；1-开启
+    private Integer autoFueling;   //必填，0-关闭；1-开启
 
 
 }

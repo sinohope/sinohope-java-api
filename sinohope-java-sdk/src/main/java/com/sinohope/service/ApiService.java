@@ -169,7 +169,7 @@ public interface ApiService {
      * @param req
      * @return
      */
-    @POST("/v1/api/collect/set_strategy")
+    @POST("/v1/api/sweep/set_strategy")
     Call<ResultData> collectionStrategy(@Body CollectionStrategyReq req);
 
 
@@ -178,7 +178,7 @@ public interface ApiService {
      * @param param
      * @return
      */
-    @POST("/v1/api/collect/strategy_lists")
+    @POST("/v1/api/sweep/strategy_lists")
     Call<ResultData<PageData<CollectStrategyRes>>> collectionStrategyLists(@Body CollectionStrategyListsReq param);
 
 
@@ -187,7 +187,7 @@ public interface ApiService {
      * @param param
      * @return
      */
-    @POST("/v1/api/collect/set_gas_station")
+    @POST("/v1/api/sweep/set_gas_station")
     Call<ResultData> setGasStation(@Body SetGasStationReq param);
 
 
@@ -196,7 +196,7 @@ public interface ApiService {
      * @param param
      * @return
      */
-    @POST("/v1/api/collect/gas_station_lists")
+    @POST("/v1/api/sweep/gas_station_lists")
     Call<ResultData<List<GasStationRes>>> gasStationLists(@Body GasStationListsReq param);
 
 
