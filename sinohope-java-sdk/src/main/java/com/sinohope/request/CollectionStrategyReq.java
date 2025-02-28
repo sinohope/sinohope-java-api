@@ -20,8 +20,6 @@ public class CollectionStrategyReq {
 
     private Integer enabled; //默认0关闭，1开启；关闭后
 
-    private Integer allowExternalAddress;   //是否允许组织外地址为toAddress
-
     private Integer autoFueling;   //必填，0-关闭；1-开启
 
 
