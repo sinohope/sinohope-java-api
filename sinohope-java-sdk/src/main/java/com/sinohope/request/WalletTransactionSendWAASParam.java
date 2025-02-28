@@ -80,4 +80,9 @@ public class WalletTransactionSendWAASParam {
     private List<VinDTO> vins;
 
     private String tokenId;
+    /**
+     * utxo选择，0-默认模式，按照金额就近选；1-按照金额从大到校；1-按照金额从小到大
+     */
+    private Integer utxoSelector;
+
 }
