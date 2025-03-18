@@ -129,4 +129,9 @@ public class ApiClientImpl implements ApiClient {
     public ResultData<List<GasStationRes>> gasStationLists(GasStationListsReq req) {
         return executeSync(apiService.gasStationLists(req));
     }
+
+    @Override
+    public ResultData setDelegateEnergy(SetDelegateEnergyReq req) {
+        return executeSync(apiService.setDelegateEnergy(req));
+    }
 }

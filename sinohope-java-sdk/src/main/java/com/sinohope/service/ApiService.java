@@ -199,5 +199,13 @@ public interface ApiService {
     @POST("/v1/api/sweep/gas_station_lists")
     Call<ResultData<List<GasStationRes>>> gasStationLists(@Body GasStationListsReq param);
 
+    /**
+     * 配置能量租凭
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/config/set_delegate_energy")
+    Call<ResultData<List<GasStationRes>>> setDelegateEnergy(@Body SetDelegateEnergyReq param);
+
 
 }
