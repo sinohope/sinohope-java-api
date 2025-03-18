@@ -47,4 +47,7 @@ public interface ApiClient {
     ResultData setGasStation(SetGasStationReq req);
 
     ResultData<List<GasStationRes>> gasStationLists(GasStationListsReq req);
+
+
+    ResultData setDelegateEnergy(SetDelegateEnergyReq req);
 }
