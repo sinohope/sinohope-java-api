@@ -207,5 +207,13 @@ public interface ApiService {
     @POST("/v1/api/config/set_delegate_energy")
     Call<ResultData<List<GasStationRes>>> setDelegateEnergy(@Body SetDelegateEnergyReq param);
 
+    /**
+     * 配置waas高级交易规则
+     * @param param
+     * @return
+     */
+    @POST("/v1/api/config/set_transfer_strategy")
+    Call<ResultData> setTransferStrategy(@Body SetTransferStrategyReq param);
+
 
 }

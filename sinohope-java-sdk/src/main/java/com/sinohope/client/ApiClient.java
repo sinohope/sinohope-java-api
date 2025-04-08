@@ -50,4 +50,7 @@ public interface ApiClient {
 
 
     ResultData setDelegateEnergy(SetDelegateEnergyReq req);
+
+
+    ResultData setTransferStrategy(SetTransferStrategyReq req);
 }
