@@ -18,5 +18,7 @@ public class SetTransferStrategyReq {
     private Integer hitResult;
 
     private Long vaultId;
+    //状态：0-关闭；1-开启
+    private Integer state;
 
 }
