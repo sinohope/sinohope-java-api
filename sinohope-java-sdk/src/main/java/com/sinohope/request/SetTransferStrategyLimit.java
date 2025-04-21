@@ -9,5 +9,5 @@ public class SetTransferStrategyLimit {
     //资产计价单位：usdt
     private String chargeUnit;
     //金额限制
-    private Long limit24TimeAmount;
+    private String limit24TimeAmount;
 }
