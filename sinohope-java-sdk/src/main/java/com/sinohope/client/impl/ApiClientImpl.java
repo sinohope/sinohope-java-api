@@ -134,4 +134,9 @@ public class ApiClientImpl implements ApiClient {
     public ResultData setDelegateEnergy(SetDelegateEnergyReq req) {
         return executeSync(apiService.setDelegateEnergy(req));
     }
+
+    @Override
+    public ResultData setTransferStrategy(SetTransferStrategyReq req) {
+        return executeSync(apiService.setTransferStrategy(req));
+    }
 }
